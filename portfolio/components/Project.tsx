@@ -10,6 +10,7 @@ interface ProjectProps {
   github?: string;
   index: number;
   important: boolean;
+  alternate_link?: string;
 }
 
 export default function Project({
@@ -19,6 +20,7 @@ export default function Project({
   technologies,
   github,
   index,
+  alternate_link,
 }: // important,
 ProjectProps) {
   return (
@@ -61,7 +63,15 @@ ProjectProps) {
             </Link>
           </div>
         ) : (
-          <p className="text-green-400">Coming soon! 👀</p>
+          <Link
+            href={alternate_link || "#"}
+            target="_blank"
+            className="text-green-400 hover:text-green-500 transition-colors flex items-center gap-2"
+          >
+            <span className="text-green-400">
+              Check out whats coming soon! 👀
+            </span>
+          </Link>
         )}
       </div>
     </div>

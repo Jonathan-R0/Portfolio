@@ -12,7 +12,8 @@
       "Jest",
       "Cypress"
     ],
-    "important": true
+    "important": true,
+    "alternate_link": "https://numiplatform.tech"
   },
   {
     "title": "User CRUD",
