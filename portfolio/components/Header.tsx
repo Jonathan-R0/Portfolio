@@ -50,7 +50,7 @@ export default function Header() {
           <ul
             className={`md:flex space-y-2 md:space-y-0 md:space-x-4 ${
               isMenuOpen
-                ? "block absolute top-full left-0 right-0 bg-gray-800 p-4"
+                ? "block absolute top-full left-0 right-0 bg-gray-800 p-4 z-50 transition-all duration-300 ease-in-out"
                 : "hidden md:block"
             }`}
           >
@@ -103,6 +103,12 @@ export default function Header() {
           </ul>
         </div>
       </nav>
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300"
+          onClick={() => setIsMenuOpen(false)}
+        ></div>
+      )}
     </header>
   );
 }
