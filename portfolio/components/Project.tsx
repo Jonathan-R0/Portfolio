@@ -22,15 +22,17 @@ export default function Project({
   return (
     <div
       key={index}
-      className="bg-gray-800 rounded-lg overflow-hidden shadow-lg flex flex-col h-full"
+      className="bg-gray-800 rounded-lg overflow-hidden shadow-lg flex flex-col h-full group"
     >
-      <Image
-        src={image}
-        alt={title}
-        width={300}
-        height={200}
-        className="w-full"
-      />
+      <div className="relative overflow-hidden">
+        <Image
+          src={`${image}?height=200&width=300`}
+          alt={title}
+          width={300}
+          height={200}
+          className="w-full  transition-all duration-300 filter grayscale group-hover:filter-none"
+        />
+      </div>
       <div className="p-4 flex flex-col flex-grow">
         <h3 className="text-xl font-bold mb-2">{title}</h3>
         <p className="text-gray-400 mb-4 flex-grow">{description}</p>
