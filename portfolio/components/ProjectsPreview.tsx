@@ -8,6 +8,7 @@ interface Project {
   image: string;
   technologies: string[];
   github: string;
+  important: boolean;
 }
 
 export default function ProjectsPreview() {
@@ -29,9 +30,11 @@ export default function ProjectsPreview() {
         Featured Projects 💼
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
-          <Project key={index} {...project} index={index} />
-        ))}
+        {projects.map((project, index) =>
+          project.important ? (
+            <Project key={index} {...project} index={index} />
+          ) : null
+        )}
       </div>
       <div className="mt-12 text-center">
         <Link
