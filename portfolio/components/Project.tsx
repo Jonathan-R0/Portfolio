@@ -9,6 +9,7 @@ interface ProjectProps {
   technologies: string[];
   github: string;
   index: number;
+  important: boolean;
 }
 
 export default function Project({
@@ -18,6 +19,7 @@ export default function Project({
   technologies,
   github,
   index,
+  important,
 }: ProjectProps) {
   return (
     <div
@@ -25,13 +27,15 @@ export default function Project({
       className="bg-gray-800 rounded-lg overflow-hidden shadow-lg flex flex-col h-full group"
     >
       <div className="relative overflow-hidden">
-        <Image
-          src={`${image}?height=200&width=300`}
-          alt={title}
-          width={300}
-          height={200}
-          className="w-full  transition-all duration-300 filter grayscale group-hover:filter-none"
-        />
+        {!important ? (
+          <Image
+            src={`${image}?height=200&width=300`}
+            alt={title}
+            width={300}
+            height={200}
+            className="w-full  transition-all duration-300 filter grayscale group-hover:filter-none"
+          />
+        ) : null}
       </div>
       <div className="p-4 flex flex-col flex-grow">
         <h3 className="text-xl font-bold mb-2">{title}</h3>
