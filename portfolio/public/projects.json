@@ -61,14 +61,6 @@
     "important": false
   },
   {
-    "title": "Img2Ascii",
-    "description": "Convert images to ASCII art.",
-    "image": "/img/ascii.png",
-    "technologies": ["C++", "SDL"],
-    "github": "https://github.com/Jonathan-R0/Img2Ascii",
-    "important": false
-  },
-  {
     "title": "MS Teams Notifier",
     "description": "📱Simple python program for people that can't log in their phones, that notifies you whenever a Microsoft Teams notification appears on your PC.",
     "image": "/img/msteams.png",
