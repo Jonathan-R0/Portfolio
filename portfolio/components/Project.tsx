@@ -19,8 +19,8 @@ export default function Project({
   technologies,
   github,
   index,
-  important,
-}: ProjectProps) {
+}: // important,
+ProjectProps) {
   return (
     <div
       key={index}
