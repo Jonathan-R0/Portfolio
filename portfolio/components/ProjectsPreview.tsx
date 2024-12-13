@@ -7,7 +7,7 @@ interface Project {
   description: string;
   image: string;
   technologies: string[];
-  github: string;
+  github?: string;
   important: boolean;
 }
 

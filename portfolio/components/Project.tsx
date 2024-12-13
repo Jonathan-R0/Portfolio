@@ -7,7 +7,7 @@ interface ProjectProps {
   description: string;
   image: string;
   technologies: string[];
-  github: string;
+  github?: string;
   index: number;
   important: boolean;
 }
@@ -47,16 +47,20 @@ export default function Project({
             </span>
           ))}
         </div>
-        <div className="flex flex-col mt-auto">
-          <Link
-            href={github}
-            target="_blank"
-            className="text-green-400 hover:text-green-500 transition-colors flex items-center gap-2"
-          >
-            <Github size={20} />
-            <span>View on GitHub</span>
-          </Link>
-        </div>
+        {github ? (
+          <div className="flex flex-col mt-auto">
+            <Link
+              href={github}
+              target="_blank"
+              className="text-green-400 hover:text-green-500 transition-colors flex items-center gap-2"
+            >
+              <Github size={20} />
+              <span>View on GitHub</span>
+            </Link>
+          </div>
+        ) : (
+          <p className="text-green-400">Coming soon! 👀</p>
+        )}
       </div>
     </div>
   );
