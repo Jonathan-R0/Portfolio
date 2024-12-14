@@ -40,13 +40,13 @@ export default function ProjectsPreview() {
           href="/projects"
           className="text-green-400 hover:text-green-500 transition-colors text-lg font-semibold"
         >
-          Explore More Projects 👾
+          Explore more projects 👾
         </Link>
         <Link
           href="/blog"
           className="text-green-400 hover:text-green-500 transition-colors text-lg font-semibold"
         >
-          Explore More Projects 🦾
+          Check out my blog! 🦾
         </Link>
       </div>
     </section>
