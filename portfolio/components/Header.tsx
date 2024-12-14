@@ -2,36 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
-
-  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    if (pathname !== "/") {
-      router.push("/");
-      setTimeout(() => {
-        const contactSection = document.getElementById("contact");
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    } else {
-      const contactSection = document.getElementById("contact");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
 
   return (
     <header className="bg-gray-800 py-4 sticky top-0 z-50">
@@ -89,16 +69,6 @@ export default function Header() {
               >
                 😁 About Me
               </Link>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                onClick={handleContactClick}
-                className="hover:text-green-400 transition-colors slide-in-right"
-                style={{ animationDelay: "0.4s" }}
-              >
-                📬 Contact
-              </a>
             </li>
           </ul>
         </div>

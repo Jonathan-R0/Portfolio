@@ -23,7 +23,7 @@ export default function Hero() {
       </p>
       <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
         <a
-          href="#contact"
+          href="https://www.linkedin.com/in/jonathan-rosenblatt-7b38981b4/"
           className="bg-green-500 hover:bg-green-600 text-gray-900 font-bold py-2 px-4 rounded-md transition-colors scale-in flex items-center justify-center space-x-2 w-48 h-12 text-base"
           style={{ animationDelay: "0.6s" }}
         >

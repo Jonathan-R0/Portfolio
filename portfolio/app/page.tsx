@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ProjectsPreview from "@/components/ProjectsPreview";
-import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { useSearchParams } from "next/navigation";
 import Skills from "@/components/Skills";
@@ -29,7 +28,6 @@ export default function Home() {
         <Hero />
         <Skills />
         <ProjectsPreview />
-        <Contact />
       </main>
       <Footer />
     </div>
