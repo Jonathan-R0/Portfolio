@@ -8,7 +8,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata = {
-  title: "Your Name - Backend Developer Portfolio",
+  title: "My Backend Developer Portfolio",
   description: "Portfolio showcasing backend development skills and projects",
 };
 
