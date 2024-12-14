@@ -18,7 +18,6 @@ export default function Projects() {
   useEffect(() => {
     fetch("./projects.json")
       .then((response) => {
-        console.log(response);
         return response.json();
       })
       .then((data) => setProjects(data))
