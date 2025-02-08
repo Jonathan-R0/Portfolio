@@ -5,28 +5,30 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const blogPosts = {
-  "getting-started-with-my-blog": {
-    title: "Getting Started with my Blog :)",
-    content: `
-This is something that I've been wanting to do for a long time. I've always wanted to have a place where I can share my thoughts, ideas, and projects with the world!
-
-Sometimes I will write in English, a veces en español, and maybe even in both languages! I hope you enjoy reading my posts as much as I enjoy writing them.
-
-Stay tuned for more content! 🚀
-    `,
-  },
-};
-
-type BlogPostKeys = keyof typeof blogPosts;
+interface BlogPost {
+  slug: string;
+  title: string;
+  content: string;
+  date: string;
+}
 
 export default function BlogPostClient() {
+  const [post, setPost] = useState<BlogPost | null>(null);
   const [content, setContent] = useState("");
   const [currentLine, setCurrentLine] = useState(0);
   const [isSkipped, setIsSkipped] = useState(false);
 
   const { slug } = useParams();
-  const post = blogPosts[slug as BlogPostKeys];
+
+  useEffect(() => {
+    fetch("/blogs.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const foundPost = data.find((post: BlogPost) => post.slug === slug);
+        setPost(foundPost);
+      })
+      .catch((error) => console.error("Error fetching blog posts:", error));
+  }, [slug]);
 
   useEffect(() => {
     if (!post) return;
@@ -45,9 +47,11 @@ export default function BlogPostClient() {
   }, [post, currentLine]);
 
   const handleSkip = () => {
-    setContent(post.content.trim());
-    setCurrentLine(post.content.trim().split("\n").length);
-    setIsSkipped(true);
+    if (post) {
+      setContent(post.content.trim());
+      setCurrentLine(post.content.trim().split("\n").length);
+      setIsSkipped(true);
+    }
   };
 
   if (!post) {
@@ -88,7 +92,6 @@ export default function BlogPostClient() {
           >
             <Button
               onClick={handleSkip}
-              //variant="green"
               className="bg-green-500 hover:bg-green-600 text-gray-900 font-bold rounded-md"
             >
               Skip Animation
