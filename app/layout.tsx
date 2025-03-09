@@ -10,7 +10,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jonathan-r0.github.io"),
+  metadataBase: new URL("https://niyo.com.ar"),
   title: {
     default: "Jonathan Rosenblatt | Argentina-based Backend Developer",
     template: "%s | Jonathan Rosenblatt",
@@ -39,12 +39,12 @@ export const metadata: Metadata = {
   publisher: "Jonathan Rosenblatt",
   robots: "index, follow",
   alternates: {
-    canonical: "https://jonathan-r0.github.io",
+    canonical: "https://niyo.com.ar",
   },
   openGraph: {
     type: "website",
     locale: "es_AR",
-    url: "https://jonathan-r0.github.io",
+    url: "https://niyo.com.ar",
     title: "Jonathan Rosenblatt | Argentina-based Backend Developer",
     description:
       "Computer Engineering student at FIUBA and Argentina-based software developer specializing in TypeScript, Java Spring, Python, and more.",
@@ -75,7 +75,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Jonathan Rosenblatt",
-              "url": "https://jonathan-r0.github.io",
+              "url": "https://niyo.com.ar",
               "jobTitle": "Software Developer",
               "nationality": "Argentinian",
               "address": {
