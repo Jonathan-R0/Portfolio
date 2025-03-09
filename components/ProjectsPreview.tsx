@@ -35,7 +35,7 @@ export default function ProjectsPreview() {
           ) : null
         )}
       </div>
-      <div className="mt-12 text-center flex flex-row justify-center space-x-20">
+      <div className="mt-12 text-center flex flex-col sm:flex-row justify-center items-center sm:space-x-8 md:space-x-12 lg:space-x-20 space-y-4 sm:space-y-0">
         <Link
           href="/projects"
           className="text-green-400 hover:text-green-500 transition-colors text-lg font-semibold"
