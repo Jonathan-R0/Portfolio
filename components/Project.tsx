@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import Image from "next/image";
 import { Github } from "lucide-react";
 
 interface ProjectProps {
@@ -31,7 +31,7 @@ ProjectProps) {
       <div className="relative overflow-hidden">
         {
           /*!important*/ false ? (
-            <Image
+            <img
               src={`${image}?height=200&width=300`}
               alt={title}
               width={300}
