@@ -60,7 +60,7 @@ export default function SubjectsLeft() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {4}
+            {totalSubjects - completedSubjects}
           </motion.div>
           <p className="text-xl mb-4">Subjects left to graduate</p>
           <p className="text-center">
