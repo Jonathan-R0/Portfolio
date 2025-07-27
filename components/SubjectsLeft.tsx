@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
-const totalSubjects = 36; // Total subjects in the Computer Engineering program at FIUBA
-const completedSubjects = 32; // Adjust this number based on Jonathan's progress
+const totalSubjects = 36;
+const completedSubjects = 33;
 
 const data = [
   { name: "Completed", value: completedSubjects },
