@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 const totalSubjects = 36;
-const completedSubjects = 33;
+const completedSubjects = 34;
 
 const data = [
   { name: "Completed", value: completedSubjects },
