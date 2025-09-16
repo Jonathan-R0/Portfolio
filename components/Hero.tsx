@@ -36,7 +36,7 @@ export default function Hero() {
           className="bg-green-500 hover:bg-green-600 text-gray-900 font-bold flex items-center justify-center space-x-2 scale-in w-48 h-12 text-base"
           style={{ animationDelay: "0.8s" }}
         >
-          <ExternalLink size={20} />
+          <ExternalLink size={25} />
           <span>Open my resume</span>
         </Button>
       </div>
