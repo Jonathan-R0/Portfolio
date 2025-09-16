@@ -37,7 +37,7 @@ export default function Hero() {
           style={{ animationDelay: "0.8s" }}
         >
           <ExternalLink size={20} />
-          <span>Checkout my resume</span>
+          <span>Open my resume</span>
         </Button>
       </div>
     </section>
