@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Download, Mail } from "lucide-react";
+import { ExternalLink, Mail } from "lucide-react";
 
 export default function Hero() {
   const handleDownloadCV = () => {
@@ -36,8 +36,8 @@ export default function Hero() {
           className="bg-green-500 hover:bg-green-600 text-gray-900 font-bold flex items-center justify-center space-x-2 scale-in w-48 h-12 text-base"
           style={{ animationDelay: "0.8s" }}
         >
-          <Download size={20} />
-          <span>Download CV</span>
+          <ExternalLink size={20} />
+          <span>Checkout my resume</span>
         </Button>
       </div>
     </section>
