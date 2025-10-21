@@ -4,7 +4,7 @@ import { ExternalLink, Mail } from "lucide-react";
 export default function Hero() {
   const handleDownloadCV = () => {
     const cvUrl =
-      "https://drive.google.com/file/d/1Vb6xSnUc63XIBxOD9kbn1_RFLpqiYHw8/view?usp=sharing";
+      "https://drive.google.com/file/d/1lU-maLg1Ti5hBJWsl3G7RRB7ljLRGd9a/view?usp=sharing";
     window.open(cvUrl, "_blank");
   };
 
