@@ -10,7 +10,7 @@ const data = [
   { name: "Remaining", value: totalSubjects - completedSubjects },
 ];
 
-const COLORS = ["#10B981", "#374151"];
+const COLORS = ["#6EE7B7", "#1F2937"];
 
 export default function SubjectsLeft() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -25,12 +25,13 @@ export default function SubjectsLeft() {
   }, []);
 
   return (
-    <section id="SubjectsLeft" className="py-20 bg-gray-900">
+    <section id="SubjectsLeft" className="py-16 md:py-20">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center">
+        <p className="section-kicker">FIUBA</p>
+        <h2 className="section-title mb-10">
           Graduation Progress
         </h2>
-        <div className="flex flex-col items-center">
+        <div className="glass-panel mx-auto flex max-w-xl flex-col items-center rounded-3xl p-8">
           <div className="w-64 h-64">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -55,15 +56,15 @@ export default function SubjectsLeft() {
             </ResponsiveContainer>
           </div>
           <motion.div
-            className="text-6xl font-bold mb-12"
+            className="mb-8 text-6xl font-semibold text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             {totalSubjects - completedSubjects}
           </motion.div>
-          <p className="text-xl mb-4">Subjects left to graduate</p>
-          <p className="text-center">
+          <p className="mb-4 text-xl text-slate-200">Subjects left to graduate</p>
+          <p className="text-center text-slate-400">
             {completedSubjects} out of {totalSubjects} subjects completed
           </p>
         </div>

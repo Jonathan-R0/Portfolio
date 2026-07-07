@@ -25,8 +25,8 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-20">
-      <h2 className="text-3xl font-bold mb-8 text-center">Projects 💼</h2>
+    <section id="projects" className="py-12 md:py-16">
+      <h2 className="section-title mb-10">Projects 💼</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <Project key={index} {...project} index={index} important={false} />

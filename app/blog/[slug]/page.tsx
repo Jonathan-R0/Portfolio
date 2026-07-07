@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 
 export default function BlogPost() {
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 font-mono">
+    <div className="site-shell">
       <Header />
       <BlogPostClient />
       <Footer />

@@ -55,14 +55,15 @@ export default function BlogPostClient() {
   };
 
   if (!post) {
-    return <div>Post not found</div>;
+    return <div className="content-shell">Post not found</div>;
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 font-mono">
-      <main className="container mx-auto px-4 py-8">
+    <div className="text-slate-100">
+      <main className="content-shell">
+        <p className="section-kicker mt-6 text-left md:text-center">Blog Post</p>
         <motion.h1
-          className="text-4xl font-bold mb-10"
+          className="mb-10 text-4xl font-semibold tracking-tight text-white md:text-center md:text-5xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -70,7 +71,7 @@ export default function BlogPostClient() {
           {post.title}
         </motion.h1>
         <motion.div
-          className="bg-black p-4 rounded-lg relative"
+          className="glass-panel relative rounded-3xl p-2"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -92,7 +93,7 @@ export default function BlogPostClient() {
           >
             <Button
               onClick={handleSkip}
-              className="bg-green-500 hover:bg-green-600 text-gray-900 font-bold rounded-md"
+              className="rounded-full bg-emerald-300 font-semibold text-slate-950 hover:bg-emerald-200"
             >
               Skip Animation
             </Button>

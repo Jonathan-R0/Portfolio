@@ -26,7 +26,7 @@ ProjectProps) {
   return (
     <div
       key={index}
-      className="bg-gray-800 rounded-lg overflow-hidden shadow-lg flex flex-col h-full group"
+      className="glass-panel group flex h-full flex-col overflow-hidden rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300/30 hover:bg-slate-800/60"
     >
       <div className="relative overflow-hidden">
         {
@@ -41,12 +41,12 @@ ProjectProps) {
           ) : null
         }
       </div>
-      <div className="p-4 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-gray-400 mb-4 flex-grow">{description}</p>
+      <div className="flex flex-grow flex-col p-5">
+        <h3 className="mb-3 text-xl font-semibold text-white">{title}</h3>
+        <p className="mb-5 flex-grow leading-7 text-slate-400">{description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech, i) => (
-            <span key={i} className="bg-gray-700 px-2 py-1 rounded text-sm">
+            <span key={i} className="pill">
               {tech}
             </span>
           ))}
@@ -56,7 +56,7 @@ ProjectProps) {
             <Link
               href={github}
               target="_blank"
-              className="text-green-400 hover:text-green-500 transition-colors flex items-center gap-2"
+              className="accent-link flex items-center gap-2 font-medium"
             >
               <Github size={20} />
               <span>View on GitHub</span>
@@ -66,9 +66,9 @@ ProjectProps) {
           <Link
             href={alternate_link || "#"}
             target="_blank"
-            className="text-green-400 hover:text-green-500 transition-colors flex items-center gap-2"
+            className="accent-link flex items-center gap-2 font-medium"
           >
-            <span className="text-green-400">
+            <span>
               Check out whats coming soon! 👀
             </span>
           </Link>

@@ -19,7 +19,7 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <motion.div
-      className="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105"
+      className="glass-panel overflow-hidden rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300/30"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -31,19 +31,19 @@ export default function ProjectCard({
         height={200}
         className="w-full"
       />
-      <div className="p-4">
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-gray-400 mb-4">{description}</p>
+      <div className="p-5">
+        <h3 className="mb-3 text-xl font-semibold text-white">{title}</h3>
+        <p className="mb-5 leading-7 text-slate-400">{description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech, i) => (
-            <span key={i} className="bg-gray-700 px-2 py-1 rounded-md text-sm">
+            <span key={i} className="pill">
               {tech}
             </span>
           ))}
         </div>
         <Link
           href={`/projects/${slug}`}
-          className="text-green-400 hover:underline"
+          className="accent-link font-medium"
         >
           View Project Details 👀
         </Link>

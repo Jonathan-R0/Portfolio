@@ -24,8 +24,9 @@ export default function ProjectsPreview() {
   }, []);
 
   return (
-    <section id="projects-preview" className="py-20">
-      <h2 className="text-3xl font-bold mb-12 text-center">
+    <section id="projects-preview" className="py-16 md:py-20">
+      <p className="section-kicker">Selected Work</p>
+      <h2 className="section-title mb-12">
         Featured Projects 💼
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -35,16 +36,16 @@ export default function ProjectsPreview() {
           ) : null
         )}
       </div>
-      <div className="mt-12 text-center flex flex-col sm:flex-row justify-center items-center sm:space-x-8 md:space-x-12 lg:space-x-20 space-y-4 sm:space-y-0">
+      <div className="mt-12 flex flex-col items-center justify-center gap-4 text-center sm:flex-row sm:gap-10">
         <Link
           href="/projects"
-          className="text-green-400 hover:text-green-500 transition-colors text-lg font-semibold"
+          className="accent-link text-lg font-semibold"
         >
           Explore more projects 👾
         </Link>
         <Link
           href="/blog"
-          className="text-green-400 hover:text-green-500 transition-colors text-lg font-semibold"
+          className="accent-link text-lg font-semibold"
         >
           Check out my blog! 🦾
         </Link>

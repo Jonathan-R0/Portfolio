@@ -9,73 +9,63 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  const links = [
+    { href: "/", label: "Home" },
+    { href: "/projects", label: "Projects" },
+    { href: "/blog", label: "Blog" },
+    { href: "/aboutme", label: "About Me" },
+  ];
+
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
 
   return (
-    <header className="bg-gray-800 py-4 sticky top-0 z-50">
-      <nav className="container mx-auto px-4">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 py-3 backdrop-blur-xl">
+      <nav className="container mx-auto max-w-6xl px-5 md:px-8">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-xl font-bold fade-in">
-            Jonathan-R0.dev
+          <Link href="/" className="group text-sm font-semibold tracking-[0.24em] text-white fade-in md:text-base">
+            Jonathan<span className="text-emerald-300 transition-colors group-hover:text-emerald-200">-R0</span>.dev
           </Link>
           <button
-            className="md:hidden"
+            className="glass-panel flex h-11 w-11 items-center justify-center rounded-full text-slate-100 md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? <X /> : <Menu />}
           </button>
           <ul
-            className={`md:flex space-y-2 md:space-y-0 md:space-x-4 ${
+            className={`items-center gap-2 md:flex ${
               isMenuOpen
-                ? "block absolute top-full left-0 right-0 bg-gray-800 p-4 z-50 transition-all duration-300 ease-in-out"
-                : "hidden md:block"
+                ? "glass-panel absolute left-4 right-4 top-[calc(100%+0.75rem)] z-50 flex flex-col rounded-3xl p-3 transition-all duration-300 ease-in-out"
+                : "hidden"
             }`}
           >
-            <li>
-              <Link
-                href="/"
-                className="hover:text-green-400 transition-colors slide-in-right"
-                style={{ animationDelay: "0.1s" }}
-              >
-                🏠 Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/projects"
-                className="hover:text-green-400 transition-colors slide-in-right"
-                style={{ animationDelay: "0.2s" }}
-              >
-                💼 Projects
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/blog"
-                className="hover:text-green-400 transition-colors slide-in-right"
-                style={{ animationDelay: "0.3s" }}
-              >
-                📝 Blog
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/aboutme"
-                className="hover:text-green-400 transition-colors slide-in-right"
-                style={{ animationDelay: "0.3s" }}
-              >
-                😁 About Me
-              </Link>
-            </li>
+            {links.map((link, index) => {
+              const isActive = pathname === link.href;
+
+              return (
+                <li key={link.href} className="w-full md:w-auto">
+                  <Link
+                    href={link.href}
+                    className={`block rounded-full px-4 py-2 text-sm transition-all slide-in-right md:inline-flex ${
+                      isActive
+                        ? "bg-emerald-300 text-slate-950 shadow-lg shadow-emerald-950/40"
+                        : "text-slate-300 hover:bg-white/10 hover:text-white"
+                    }`}
+                    style={{ animationDelay: `${(index + 1) * 0.1}s` }}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </nav>
       {isMenuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300"
+          className="fixed inset-0 z-40 bg-slate-950/60 transition-opacity duration-300 md:hidden"
           onClick={() => setIsMenuOpen(false)}
         ></div>
       )}

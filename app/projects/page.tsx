@@ -4,10 +4,11 @@ import Projects from "@/components/Projects";
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 font-mono">
+    <div className="site-shell">
       <Header />
-      <main className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mt-10 mb-8 text-center">
+      <main className="content-shell">
+        <p className="section-kicker mt-6">Portfolio</p>
+        <h1 className="section-title mb-8">
           All Projects
         </h1>
         <Projects />

@@ -6,12 +6,13 @@ import SubjectsLeft from "@/components/SubjectsLeft";
 
 export default function AboutMe() {
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 font-mono">
+    <div className="site-shell">
       <Header />
-      <main className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mt-10 mb-8 text-center">I ♥️ 🖥️</h1>
+      <main className="content-shell">
+        <p className="section-kicker mt-6">About</p>
+        <h1 className="section-title mb-8">I ♥️ 🖥️</h1>
         <p
-          className="text-lg md:text-xl lg:text-2xl ml-2 fade-in"
+          className="glass-panel mx-auto max-w-3xl rounded-3xl p-6 text-lg leading-8 text-slate-300 fade-in md:p-8 md:text-xl"
           style={{ animationDelay: "0.3s" }}
         >
           Computer Engineering student, from the Faculty of Engineering of the
