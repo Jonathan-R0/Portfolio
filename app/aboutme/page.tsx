@@ -15,8 +15,8 @@ export default function AboutMe() {
           className="glass-panel mx-auto max-w-3xl rounded-3xl p-6 text-lg leading-8 text-slate-300 fade-in md:p-8 md:text-xl"
           style={{ animationDelay: "0.3s" }}
         >
-          Computer Engineering student, from the Faculty of Engineering of the
-          UBA. Passionate about computing, abstract problems and linux! I love
+          Computer Engineer from the Faculty of Engineering of the UBA.
+          Passionate about computing, abstract problems and linux! I love
           gcc and i3 😍
         </p>
         <SubjectsLeft />
