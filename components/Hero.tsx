@@ -23,7 +23,7 @@ export default function Hero() {
         className="mx-auto mb-10 max-w-3xl text-lg leading-8 text-slate-300 fade-in md:text-xl"
         style={{ animationDelay: "0.3s" }}
       >
-        Computer Engineering Student at FIUBA 🎓 | Software Developer 💻 | Linux
+        Computer Engineering @ FIUBA 🎓 | Software Developer 💻 | Linux
         Enthusiast 🚀
       </p>
       <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

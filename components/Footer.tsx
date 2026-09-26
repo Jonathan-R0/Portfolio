@@ -32,7 +32,7 @@ export default function Footer() {
             <span className="sr-only">Email</span>
           </a>
         </div>
-        <p className="mt-5 text-sm text-slate-500">Computer Engineering Student at FIUBA 🎓</p>
+        <p className="mt-5 text-sm text-slate-500">Computer Engineering @ FIUBA 🎓</p>
       </div>
     </footer>
   )
