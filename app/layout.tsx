@@ -1,13 +1,14 @@
 import { Metadata } from "next";
 import "./globals.css";
-import { Inter, Roboto_Mono } from "next/font/google";
+import { Manrope } from "next/font/google";
+import localFont from "next/font/local";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Script from "next/script";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const robotoMono = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font-roboto-mono",
-});
+const display = Manrope({ subsets: ["latin"], variable: "--font-display", display: "swap" });
+const body = localFont({ src: "./fonts/GeistVF.woff", variable: "--font-body", display: "swap" });
+const mono = localFont({ src: "./fonts/GeistMonoVF.woff", variable: "--font-code", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://niyo.com.ar"),
@@ -67,8 +68,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${robotoMono.variable} font-sans`}>
-        {children}
+      <body className={`${display.variable} ${body.variable} ${mono.variable}`}>
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <div className="site-shell">
+          <Header />
+          {children}
+          <Footer />
+        </div>
         <Script id="schema-structured-data" type="application/ld+json">
           {`
             {
@@ -83,8 +89,8 @@ export default function RootLayout({
                 "addressCountry": "Argentina",
                 "addressLocality": "Buenos Aires"
               },
-              "worksFor": {
-                "@type": "Organization",
+              "alumniOf": {
+                "@type": "CollegeOrUniversity",
                 "name": "FIUBA"
               },
               "description": "Argentina-based Computer Engineer and software developer specializing in backend technologies.",

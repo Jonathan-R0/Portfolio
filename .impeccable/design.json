@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-03T22:03:08.454Z",
+  "title": "Design System: Jonathan Rosenblatt Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Cool Paper", "canonical": "#f8f8fa", "tonalRamp": ["oklch(15% 0.003 286)", "oklch(27% 0.003 286)", "oklch(38% 0.003 286)", "oklch(50% 0.003 286)", "oklch(61% 0.003 286)", "oklch(73% 0.003 286)", "oklch(84% 0.003 286)", "oklch(95% 0.003 286)"] },
+      "ink": { "role": "neutral", "displayName": "Graphite", "canonical": "#27232e", "tonalRamp": ["oklch(15% 0.02 300)", "oklch(27% 0.02 300)", "oklch(38% 0.02 300)", "oklch(50% 0.02 300)", "oklch(61% 0.02 300)", "oklch(73% 0.02 300)", "oklch(84% 0.02 300)", "oklch(95% 0.02 300)"] },
+      "quiet": { "role": "neutral", "displayName": "Quiet Graphite", "canonical": "#645f6e", "tonalRamp": ["oklch(15% 0.025 300)", "oklch(27% 0.025 300)", "oklch(38% 0.025 300)", "oklch(50% 0.025 300)", "oklch(61% 0.025 300)", "oklch(73% 0.025 300)", "oklch(84% 0.025 300)", "oklch(95% 0.025 300)"] },
+      "line": { "role": "neutral", "displayName": "Fine Divider", "canonical": "#ddd9e4", "tonalRamp": ["oklch(15% 0.015 300)", "oklch(27% 0.015 300)", "oklch(38% 0.015 300)", "oklch(50% 0.015 300)", "oklch(61% 0.015 300)", "oklch(73% 0.015 300)", "oklch(84% 0.015 300)", "oklch(95% 0.015 300)"] },
+      "violet": { "role": "primary", "displayName": "Ink Violet", "canonical": "#392a50", "tonalRamp": ["oklch(15% 0.065 303)", "oklch(27% 0.065 303)", "oklch(38% 0.065 303)", "oklch(50% 0.065 303)", "oklch(61% 0.065 303)", "oklch(73% 0.065 303)", "oklch(84% 0.065 303)", "oklch(95% 0.065 303)"] },
+      "lavender": { "role": "primary", "displayName": "Lavender", "canonical": "#ddd2f0", "tonalRamp": ["oklch(15% 0.041 305)", "oklch(27% 0.041 305)", "oklch(38% 0.041 305)", "oklch(50% 0.041 305)", "oklch(61% 0.041 305)", "oklch(73% 0.041 305)", "oklch(84% 0.041 305)", "oklch(95% 0.041 305)"] },
+      "lavender-quiet": { "role": "primary", "displayName": "Quiet Lavender", "canonical": "#c5b7d9", "tonalRamp": ["oklch(15% 0.047 305)", "oklch(27% 0.047 305)", "oklch(38% 0.047 305)", "oklch(50% 0.047 305)", "oklch(61% 0.047 305)", "oklch(73% 0.047 305)", "oklch(84% 0.047 305)", "oklch(95% 0.047 305)"] },
+      "focus": { "role": "primary", "displayName": "Focus Violet", "canonical": "#7650a8", "tonalRamp": ["oklch(15% 0.137 303)", "oklch(27% 0.137 303)", "oklch(38% 0.137 303)", "oklch(50% 0.137 303)", "oklch(61% 0.137 303)", "oklch(73% 0.137 303)", "oklch(84% 0.137 303)", "oklch(95% 0.137 303)"] },
+      "surface": { "role": "neutral", "displayName": "Soft Exhibition Surface", "canonical": "#eeeaf3", "tonalRamp": ["oklch(15% 0.012 305)", "oklch(27% 0.012 305)", "oklch(38% 0.012 305)", "oklch(50% 0.012 305)", "oklch(61% 0.012 305)", "oklch(73% 0.012 305)", "oklch(84% 0.012 305)", "oklch(95% 0.012 305)"] },
+      "surface-lavender": { "role": "neutral", "displayName": "Lavender Mat", "canonical": "#e4dbef", "tonalRamp": ["oklch(15% 0.027 305)", "oklch(27% 0.027 305)", "oklch(38% 0.027 305)", "oklch(50% 0.027 305)", "oklch(61% 0.027 305)", "oklch(73% 0.027 305)", "oklch(84% 0.027 305)", "oklch(95% 0.027 305)"] },
+      "surface-cool": { "role": "neutral", "displayName": "Cool Mat", "canonical": "#e2e6ee", "tonalRamp": ["oklch(15% 0.012 266)", "oklch(27% 0.012 266)", "oklch(38% 0.012 266)", "oklch(50% 0.012 266)", "oklch(61% 0.012 266)", "oklch(73% 0.012 266)", "oklch(84% 0.012 266)", "oklch(95% 0.012 266)"] },
+      "resume-border": { "role": "neutral", "displayName": "Resume Stroke", "canonical": "#bcb3c7", "tonalRamp": ["oklch(15% 0.029 305)", "oklch(27% 0.029 305)", "oklch(38% 0.029 305)", "oklch(50% 0.029 305)", "oklch(61% 0.029 305)", "oklch(73% 0.029 305)", "oklch(84% 0.029 305)", "oklch(95% 0.029 305)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Hero Display", "purpose": "Manrope hero name; mobile uses clamp(2.8rem, 10.5vw, 4.6rem)." },
+      "headline": { "displayName": "Section Heading", "purpose": "Manrope section headings; mobile uses 2rem." },
+      "title": { "displayName": "Project Title", "purpose": "Standard project heading; featured and compact exhibition variants have contextual sizes." },
+      "body": { "displayName": "Body", "purpose": "Locally hosted Geist prose, navigation and actions. Use the source --font-body variable for its generated family." },
+      "label": { "displayName": "Technology Metadata", "purpose": "Plain wrapping technology list, not a chip or filter." },
+      "article": { "displayName": "Reading Prose", "purpose": "760px maximum reading column; mobile size 1.08rem." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "arrow-feedback", "value": "transform 180ms ease-out", "purpose": "Text-link SVG hover displacement translate(2px, -2px)." },
+      { "name": "resume-feedback", "value": "background-color 160ms ease-out", "purpose": "Outlined resume anchor's lavender hover." },
+      { "name": "writing-feedback", "value": "color 160ms ease-out", "purpose": "Whole writing-row link hover." },
+      { "name": "anchor-scroll", "value": "smooth", "purpose": "HTML scrolling; reduced motion switches to auto." },
+      { "name": "reduced-motion", "value": "animation: none !important; transition: none !important", "purpose": "Applies to all elements and pseudo-elements in prefers-reduced-motion: reduce. Hover transforms remain instantaneous." }
+    ],
+    "breakpoints": [
+      { "name": "tablet-max", "value": "1050px" },
+      { "name": "mobile-max", "value": "760px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Resume Link",
+      "kind": "button",
+      "refersTo": "resume-link",
+      "description": "Outlined anchor for the external resume; 40px minimum height on mobile.",
+      "html": "<a class=\"ds-resume\" href=\"https://drive.google.com/file/d/1TqiDR9FA-7JP3-DO4ha2yrW4X3IyuRYO/view?usp=sharing\" target=\"_blank\" rel=\"noopener noreferrer\">Resume <svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10M7 17 17 7\"/></svg></a>",
+      "css": ".ds-resume { display:inline-flex; align-items:center; gap:10px; padding:8px 16px; min-height:44px; border:1px solid #bcb3c7; border-radius:6px; color:var(--ink, #27232e); font-family:var(--font-body, Geist, sans-serif); font-size:.88rem; font-weight:550; line-height:1.6; text-decoration:none; transition:background-color 160ms ease-out; } .ds-resume:hover { background:var(--lavender, #ddd2f0); } .ds-resume:focus-visible { outline:2px solid var(--focus, #7650a8); outline-offset:5px; border-radius:2px; } @media(max-width:760px) { .ds-resume { min-height:40px; padding:5px 12px; font-size:.8rem; } } @media(prefers-reduced-motion:reduce) { .ds-resume { transition:none !important; } }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "Direct contact action with underlined hover and directional SVG feedback.",
+      "html": "<a class=\"ds-link\" href=\"mailto:jonathan@rosenblatt.com.ar\">Get in touch <svg width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10M7 17 17 7\"/></svg></a>",
+      "css": ".ds-link { display:inline-flex; align-items:center; gap:.65rem; min-height:44px; color:var(--ink, #27232e); font-family:var(--font-body, Geist, sans-serif); font-size:.94rem; font-weight:500; line-height:1.6; text-decoration:none; text-underline-offset:.3em; } .ds-link:hover { text-decoration:underline; } .ds-link svg { flex-shrink:0; transition:transform 180ms ease-out; } .ds-link:hover svg { transform:translate(2px,-2px); } .ds-link:focus-visible { outline:2px solid var(--focus, #7650a8); outline-offset:5px; border-radius:2px; } @media(prefers-reduced-motion:reduce) { .ds-link svg { transition:none !important; } }"
+    },
+    {
+      "name": "Main Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Always-visible plain links with an active underline; stretches across the mobile header's second row.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"/\" aria-current=\"page\">Home</a><a href=\"/projects\">Projects</a><a href=\"/aboutme\">About</a><a href=\"/blog\">Writing</a></nav>",
+      "css": ".ds-nav { display:flex; gap:32px; font-family:var(--font-body, Geist, sans-serif); line-height:1.6; } .ds-nav a { position:relative; display:inline-flex; align-items:center; min-height:44px; color:var(--quiet, #645f6e); font-size:.92rem; text-decoration:none; } .ds-nav a:hover, .ds-nav a[aria-current=page] { color:var(--ink, #27232e); } .ds-nav a[aria-current=page]::after { content:''; position:absolute; bottom:4px; left:0; right:0; height:2px; background:var(--violet, #392a50); } .ds-nav a:focus-visible { outline:2px solid var(--focus, #7650a8); outline-offset:5px; border-radius:2px; } @media(max-width:760px) { .ds-nav { width:100%; justify-content:space-between; gap:16px; } .ds-nav a { font-size:.84rem; } }"
+    },
+    {
+      "name": "Technology List",
+      "kind": "custom",
+      "refersTo": "technology-list",
+      "description": "Actual plain-text metadata pattern; intentionally has no interactive states or pill shape.",
+      "html": "<ul class=\"ds-technologies\" aria-label=\"Numi technologies\"><li>Typescript</li><li>NestJS</li><li>PostgreSQL</li><li>Docker</li><li>Jest</li><li>Cypress</li></ul>",
+      "css": ".ds-technologies { display:flex; flex-wrap:wrap; column-gap:16px; row-gap:4px; margin:19px 0 12px; padding:0; list-style:none; color:var(--quiet, #645f6e); font-family:var(--font-body, Geist, sans-serif); font-size:.77rem; line-height:1.6; }"
+    },
+    {
+      "name": "Project Image Mat",
+      "kind": "card",
+      "refersTo": "project-visual",
+      "description": "Default contained-image frame, not a clickable card. Preview uses the existing owner-supplied project image.",
+      "html": "<figure class=\"ds-project-mat\"><img src=\"/img/numi.png\" alt=\"Numi project preview\" width=\"1200\" height=\"750\" /></figure>",
+      "css": ".ds-project-mat { display:flex; justify-content:center; align-items:center; margin:0; background:#eeeaf3; aspect-ratio:16/10; padding:24px; border-radius:10px; overflow:hidden; } .ds-project-mat img { display:block; width:100%; height:100%; max-width:100%; object-fit:contain; object-position:center; }"
+    },
+    {
+      "name": "Writing Row",
+      "kind": "custom",
+      "refersTo": "article-row",
+      "description": "Whole-row article destination with date, heading, divider and color feedback.",
+      "html": "<a class=\"ds-writing-row\" href=\"/blog/getting-started-with-my-blog\"><time datetime=\"2024-12-11\">December 11, 2024</time><h2>Getting Started with my Blog :)</h2><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10M7 17 17 7\"/></svg></a>",
+      "css": ".ds-writing-row { display:grid; grid-template-columns:220px 1fr auto; gap:32px; align-items:center; padding:36px 0; border-bottom:1px solid var(--line, #ddd9e4); color:var(--ink, #27232e); font-family:var(--font-body, Geist, sans-serif); line-height:1.6; text-decoration:none; transition:color 160ms ease-out; } .ds-writing-row time { font-size:.87rem; color:var(--quiet, #645f6e); } .ds-writing-row h2 { margin:0; font-family:var(--font-display, Manrope, sans-serif); font-size:1.75rem; font-weight:550; letter-spacing:-.035em; line-height:1.3; text-wrap:balance; } .ds-writing-row:hover { color:#7650a8; } .ds-writing-row:focus-visible { outline:2px solid var(--focus, #7650a8); outline-offset:5px; border-radius:2px; } @media(max-width:760px) { .ds-writing-row { grid-template-columns:1fr auto; gap:12px 20px; padding:28px 0; } .ds-writing-row time { grid-column:1/-1; } .ds-writing-row h2 { font-size:1.45rem; } } @media(prefers-reduced-motion:reduce) { .ds-writing-row { transition:none !important; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Software Project Exhibition Catalog",
+    "overview": "Cool paper, graphite lettering and an ink-violet exhibition field frame real engineering work. Large, left-aligned Manrope headings and quiet Geist copy give the portfolio a precise, open, restrained character for recruiters and technical teams.\n\nProject imagery supplies the visual evidence; the interface supplies alignment, tonal framing and direct routes to source, resume and contact. This records the implemented all-site redesign, not a provisional direction. Surface-specific strategy remains in `.impeccable/surface-home.md`.",
+    "keyCharacteristics": [
+      "Cool paper and violet/lavender tonal contrast.",
+      "Open layouts with fine dividers and modest image corners.",
+      "Real project previews, plain-text metadata and direct navigation.",
+      "Still content with brief, directional link feedback."
+    ],
+    "rules": [
+      { "name": "The Contrast Pairing Rule", "body": "Use quiet graphite on paper and quiet lavender on violet; do not carry light-surface metadata colors onto the exhibition field.", "section": "colors" },
+      { "name": "The Two Voices Rule", "body": "Manrope carries headings and the wordmark; Geist carries prose, navigation, actions and technical metadata.", "section": "typography" },
+      { "name": "The Tonal Depth Rule", "body": "Separate surfaces with color, spacing and fine rules; keep project entries flat at rest and on hover.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do preserve the paper/graphite and violet/lavender contrast pairings.",
+      "Do pair Manrope headings with locally hosted Geist prose and metadata.",
+      "Do contain real project imagery inside modestly rounded tonal mats.",
+      "Do retain visible keyboard focus, direct destinations and wrapping mobile navigation."
+    ],
+    "donts": [
+      "Don't replace project evidence with invented imagery or claims.",
+      "Don't add glass tiles, decorative shadows or animated skill grids to this world.",
+      "Don't turn technology metadata into interactive pills without a real interaction.",
+      "Don't promote local color exceptions or unused compatibility tokens into new global variants."
+    ]
+  }
+}

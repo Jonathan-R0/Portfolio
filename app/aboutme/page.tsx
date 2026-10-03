@@ -1,27 +1,18 @@
-"use client";
-
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+import Image from "next/image";
 import SubjectsLeft from "@/components/SubjectsLeft";
+import Skills from "@/components/Skills";
+import { ArrowUpRight } from "lucide-react";
+
+export const metadata: Metadata = { title: "About" };
 
 export default function AboutMe() {
   return (
-    <div className="site-shell">
-      <Header />
-      <main className="content-shell">
-        <p className="section-kicker mt-6">About</p>
-        <h1 className="section-title mb-8">I ♥️ 🖥️</h1>
-        <p
-          className="glass-panel mx-auto max-w-3xl rounded-3xl p-6 text-lg leading-8 text-slate-300 fade-in md:p-8 md:text-xl"
-          style={{ animationDelay: "0.3s" }}
-        >
-          Computer Engineer from the Faculty of Engineering of the UBA.
-          Passionate about computing, abstract problems and linux! I love
-          gcc and i3 😍
-        </p>
-        <SubjectsLeft />
-      </main>
-      <Footer />
-    </div>
+    <main id="main-content" tabIndex={-1}>
+      <section className="page-width inner-page about-page"><div className="page-intro"><h1>Curiosity,<br />compiled.</h1><p>I’m Jonathan David Rosenblatt, a software developer and Computer Engineer from the Faculty of Engineering of the University of Buenos Aires.</p></div>
+        <div className="about-body"><figure className="portrait"><Image src="/profileimage.jpg" alt="Illustrated portrait of Jonathan Rosenblatt" width={400} height={400} unoptimized preload /><figcaption>Jonathan David Rosenblatt · Buenos Aires</figcaption></figure><div className="about-copy"><h2>At home with<br />abstract problems.</h2><p>I love computing and Linux. My interests span backend development, algorithms, and the systems underneath the software.</p><p>My everyday favorites include gcc and i3. The projects here range from APIs and data models to a multiplayer game and machine learning.</p><a className="text-link" href="https://github.com/Jonathan-R0" target="_blank" rel="noopener noreferrer">Explore my GitHub <ArrowUpRight size={19} aria-hidden="true" /></a><SubjectsLeft /></div></div>
+      </section>
+      <Skills />
+    </main>
   );
 }

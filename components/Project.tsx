@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
-import { Github } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 interface ProjectProps {
   title: string;
@@ -8,72 +7,24 @@ interface ProjectProps {
   image: string;
   technologies: string[];
   github?: string;
-  index: number;
-  important: boolean;
+  important?: boolean;
   alternate_link?: string;
+  featured?: boolean;
 }
 
-export default function Project({
-  title,
-  description,
-  image,
-  technologies,
-  github,
-  index,
-  alternate_link,
-}: // important,
-ProjectProps) {
+export default function Project({ title, description, image, technologies, github, alternate_link, featured = false }: ProjectProps) {
+  const href = github || alternate_link;
+  const label = github ? "View source" : "Visit project";
   return (
-    <div
-      key={index}
-      className="glass-panel group flex h-full flex-col overflow-hidden rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300/30 hover:bg-slate-800/60"
-    >
-      <div className="relative overflow-hidden">
-        {
-          /*!important*/ false ? (
-            <img
-              src={`${image}?height=200&width=300`}
-              alt={title}
-              width={300}
-              height={200}
-              className="w-full  transition-all duration-300 filter grayscale group-hover:filter-none"
-            />
-          ) : null
-        }
+    <article className={`project-entry${featured ? " project-featured" : ""}`}>
+      <div className="project-visual">
+        <Image src={image} alt={`${title} project preview`} width={1200} height={750} unoptimized loading={featured ? "eager" : "lazy"} sizes={featured ? "(max-width: 760px) 100vw, 60vw" : "(max-width: 760px) 100vw, 50vw"} className="project-image" />
       </div>
-      <div className="flex flex-grow flex-col p-5">
-        <h3 className="mb-3 text-xl font-semibold text-white">{title}</h3>
-        <p className="mb-5 flex-grow leading-7 text-slate-400">{description}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {technologies.map((tech, i) => (
-            <span key={i} className="pill">
-              {tech}
-            </span>
-          ))}
-        </div>
-        {github ? (
-          <div className="flex flex-col mt-auto">
-            <Link
-              href={github}
-              target="_blank"
-              className="accent-link flex items-center gap-2 font-medium"
-            >
-              <Github size={20} />
-              <span>View on GitHub</span>
-            </Link>
-          </div>
-        ) : (
-          <Link
-            href={alternate_link || "#"}
-            target="_blank"
-            className="accent-link flex items-center gap-2 font-medium"
-          >
-            <span>
-              Check out whats coming soon! 👀
-            </span>
-          </Link>
-        )}
+      <div className="project-copy">
+        <h3>{title}</h3><p>{description}</p>
+        <ul className="technology-list" aria-label={`${title} technologies`}>{Array.from(new Set(technologies)).map((tech) => <li key={tech}>{tech}</li>)}</ul>
+        {href ? <a href={href} target="_blank" rel="noopener noreferrer" className="text-link">{label}<ArrowUpRight size={18} aria-hidden="true" /><span className="sr-only"> for {title}</span></a> : null}
       </div>
-    </div>
+    </article>
   );
 }
