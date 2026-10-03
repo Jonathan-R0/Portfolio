@@ -1,5 +1,7 @@
 # Portfolio redesign review — October 2026
 
+Historical review of the initial violet/project-first redesign. Superseded by the owner-directed corrections recorded in [revision-review.md](revision-review.md).
+
 ## Approved direction
 
 All-site project exhibition catalog for recruiters and technical teams. Cool white, graphite, ink violet and lavender; Manrope display and locally hosted Geist body. The owner approved the replacement palette and composition. Product facts, projects, article prose and external links remain based on the incumbent content.

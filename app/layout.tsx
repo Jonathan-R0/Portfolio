@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Jonathan Rosenblatt",
   },
   description:
-    "Computer Engineer at FIUBA and Argentina-based software developer specializing in TypeScript, Java Spring, Python, and more.",
+    "Argentina-based backend developer, Computer Engineer, and teaching assistant for Software Engineering I at FIUBA.",
   keywords: [
     "backend developer",
     "computer engineering",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     url: "https://niyo.com.ar",
     title: "Jonathan Rosenblatt | Argentina-based Backend Developer",
     description:
-      "Computer Engineer at FIUBA and Argentina-based software developer specializing in TypeScript, Java Spring, Python, and more.",
+      "Argentina-based backend developer, Computer Engineer, and teaching assistant for Software Engineering I at FIUBA.",
     siteName: "Jonathan Rosenblatt Portfolio",
     images: [
       {
@@ -82,7 +82,7 @@ export default function RootLayout({
               "@type": "Person",
               "name": "Jonathan Rosenblatt",
               "url": "https://niyo.com.ar",
-              "jobTitle": "Software Developer",
+              "jobTitle": ["Software Developer", "Teaching Assistant"],
               "nationality": "Argentinian",
               "address": {
                 "@type": "PostalAddress",
@@ -93,7 +93,7 @@ export default function RootLayout({
                 "@type": "CollegeOrUniversity",
                 "name": "FIUBA"
               },
-              "description": "Argentina-based Computer Engineer and software developer specializing in backend technologies.",
+              "description": "Argentina-based Computer Engineer, backend developer, and teaching assistant for Software Engineering I at FIUBA.",
               "knowsAbout": ["TypeScript", "Java Spring", "Python", "NestJS", "Docker", "Algorithms"],
               "sameAs": [
                 "https://github.com/Jonathan-R0",

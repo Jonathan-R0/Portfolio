@@ -6,9 +6,9 @@ import { ArrowUpRight } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home" },
+  { href: "/#skills", label: "Skills" },
   { href: "/projects", label: "Projects" },
   { href: "/aboutme", label: "About" },
-  { href: "/blog", label: "Writing" },
 ];
 
 export default function Header() {

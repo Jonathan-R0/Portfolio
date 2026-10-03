@@ -9,7 +9,7 @@ export default function ProjectsPreview() {
     <section id="selected-work" className="selected-work" aria-labelledby="selected-title">
       <div className="page-width">
         <div className="section-heading"><h2 id="selected-title">Selected work.</h2><Link href="/projects" className="text-link">All projects <ArrowRight size={19} aria-hidden="true" /></Link></div>
-        <div className="selected-projects">{selected.map((project, index) => <Project key={project.title} {...project} featured={index === 0} />)}</div>
+        <div className="selected-projects">{selected.map((project) => <Project key={project.title} {...project} />)}</div>
       </div>
     </section>
   );

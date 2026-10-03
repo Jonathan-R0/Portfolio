@@ -2,11 +2,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Portfolio design
 
-The portfolio uses a light project-catalog layout with an ink-violet selected-work section. The implemented palette, typography, responsive rules and component patterns are documented in [DESIGN.md](DESIGN.md). [PRODUCT.md](PRODUCT.md) records the audience and content constraints.
+The portfolio uses a light neutral layout with restrained blue accents and balanced emphasis on skills and projects. The implemented palette, typography, responsive rules and component patterns are documented in [DESIGN.md](DESIGN.md). [PRODUCT.md](PRODUCT.md) records the audience and content constraints.
 
-Projects and articles are maintained in `public/projects.json` and `public/blogs.json` and rendered at build time. Shared navigation and contact details live in `components/Header.tsx` and `components/Footer.tsx`; the visual system lives in `app/globals.css`.
+Projects are maintained in `public/projects.json` and rendered at build time. Skills live in `components/Skills.tsx`; the contact email is centralized in `lib/contact.ts`. Teaching and education details verified from the CV live in `lib/profile.ts`. Shared navigation and contact details live in `components/Header.tsx` and `components/Footer.tsx`; the visual system lives in `app/globals.css`.
 
-The [redesign review](.impeccable/review/redesign-review.md) includes desktop/mobile screenshots and the results of Impeccable, interface/accessibility and browser checks. Run `npm run build` for the static export in `out/`, and `npm run lint` to check the source.
+The [current teaching/Aceternity review](.impeccable/review/teaching-aceternity-review.md) includes desktop/mobile screenshots and browser checks. [Source attribution and profile verification](.impeccable/review/aceternity-sources.md) document the Card Hover Effect and Timeline adaptations. Run `npm run build` for the static export in `out/`, and `npm run lint` to check the source.
 
 ## Getting Started
 
