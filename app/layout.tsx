@@ -1,12 +1,12 @@
 import { Metadata } from "next";
 import "./globals.css";
-import { Manrope } from "next/font/google";
+import { Barlow_Condensed } from "next/font/google";
 import localFont from "next/font/local";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Script from "next/script";
 
-const display = Manrope({ subsets: ["latin"], variable: "--font-display", display: "swap" });
+const display = Barlow_Condensed({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-display", display: "swap" });
 const body = localFont({ src: "./fonts/GeistVF.woff", variable: "--font-body", display: "swap" });
 const mono = localFont({ src: "./fonts/GeistMonoVF.woff", variable: "--font-code", display: "swap" });
 

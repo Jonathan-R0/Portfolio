@@ -3,9 +3,9 @@ import { contactEmail } from "@/lib/contact";
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
+    <footer id="contact" className="site-footer">
       <div className="page-width">
-        <div className="contact-row"><h2>Let’s talk<br />software.</h2><div className="contact-links">
+        <div className="contact-row"><h2>Good software starts<br />with a conversation<span className="name-period">.</span></h2><div className="contact-links">
           <a className="text-link" href={`mailto:${contactEmail}`}>{contactEmail} <ArrowUpRight size={19} aria-hidden="true" /></a>
           <a className="text-link" href="https://www.linkedin.com/in/jonathan-rosenblatt-7b38981b4/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn <ArrowUpRight size={19} aria-hidden="true" /></a>
         </div></div>

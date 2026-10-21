@@ -1,21 +1,23 @@
-# Portfolio redesign
+# Portfolio redesign — Engineering folio
 
 Mode: Experience. Audience: recruiters and technical teams. Scope: home, projects and about. The owner explicitly corrected the previous direction: light neutrals with restrained blue accents, balanced skills and projects, correct contact email, and complete removal of the blog.
 
 ## Direction contract
 
-THESIS: A clear engineering portfolio with balanced weight for capabilities and work. Skills precede a compact project index; neither decoration nor a single project dominates.
+THESIS: A personal engineering folio, read through a persistent marginal index rather than a conventional horizontal marketing header. Skills precede a slow local-logo carousel, replacing the previous three-project selection at the owner's request. The complete collection remains one link away.
 
-OWN-WORLD: White, neutral graphite and gray surfaces. Restrained blue for actions, active navigation and focus. No large colored fields. Manrope display and locally hosted Geist body; open layouts, fine separators and modest image corners.
+OWN-WORLD: White sheets, cool gray margins, graphite type and restrained blue annotations. Barlow Condensed uppercase display, Geist prose, square-cut project mats, technical title blocks and open capability rows. No broad accent-colored regions.
 
-STORY: Identify Jonathan and his backend focus, understand his languages, infrastructure skills and engineering fundamentals, then inspect project evidence or contact him. About and resume remain easy to discover. Blog removed at the owner's request.
+STORY: Meet Jonathan, understand backend capabilities, follow each capability into real project evidence, then explore teaching and education or make contact. Every project and original destination survives.
 
-FIRST VIEWPORT: Compact navigation, left-aligned name, role and location, a short introduction, contact, and an anchor to Skills. The skills heading and three capability groups begin directly below the introduction. Resume remains in the header. Project previews follow at a deliberately smaller scale.
+FIRST VIEWPORT: A 216px desktop margin holds the monogram, route index, resume and location. The sheet opens with an overscale two-line name and text-only role annotation; a broad thesis sentence and ruled identity strip close the introduction. The first capability row enters the bottom of a 900px viewport. Mobile converts the margin to an explicit two-row header and stacks the title block. The owner subsequently requested removing the portrait from visible page content.
 
-FORM: Revision of the existing portfolio, pinned by the user's chosen “Clara con azul” palette and explicit skills-first correction. The original seed f42d43dc remains historical provenance, not authority over the revised palette or hierarchy.
+FORM: Candidate 4, seed 4a0a3b73. Grounded list: research publication, wayfinding program, architectural monograph, engineering specification folio, conference program, photographic contact sheet, museum collection index. The folio honors pinned light neutrals and skills-first ordering. Catalog challengers declined for weaker audience identification and product clarity: nixie counters, depot blinds, neon circuits, ikebana, title sequences and neo-Tokyo. Their useful disciplines are precision, navigational continuity, coherent linkage, asymmetric space, typographic scale and cross-route consistency; those disciplines raise the folio without importing their motifs.
 
-Signature interaction: image and project links pair with subtle directional arrow movement; content remains still and visible.
+Signature interaction: a shared blue annotation travels between open capability rows on hover or focus, linking the capability ledger directly to project anchors. Reduced motion replaces travel with an immediate highlight. Project source and contact actions have explicit directional feedback.
 
-Owner-approved extension: teaching assistant role and course details verified from the linked CV. Skills use Aceternity Card Hover Effect's shared background to connect each capability group to a real project. About adds Aceternity Timeline with a blue scroll-progress line for teaching and graduation. Preserve light neutrals, restrained blue, skills-first ordering and compact project previews. Keyboard focus receives equivalent feedback; reduced motion makes the effects static. All factual content remains visible without animation or JavaScript.
+Owner-requested motion extension: seven transparent local logos travel continuously on an 80-second CSS loop. Pause/Play, hover pause, offscreen/document-visibility suspension and a fully visible static reduced-motion layout preserve control. Sources and matte-processing details live in `public/logos/sources.json`; no relationship claims accompany the logos.
+
+Cross-surface: Projects is an image-and-description ledger. About is a text-led biographical folio: perspective and location opposite prose, followed by a ruled education summary and the existing academic timeline. Teaching remains verified against the linked CV. No biography, outcomes or availability claims are invented. Execution is code-led under the user's explicit autonomous roulette request.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

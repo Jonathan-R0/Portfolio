@@ -8,7 +8,7 @@ export default function ProjectsPreview() {
   return (
     <section id="selected-work" className="selected-work" aria-labelledby="selected-title">
       <div className="page-width">
-        <div className="section-heading"><h2 id="selected-title">Selected work.</h2><Link href="/projects" className="text-link">All projects <ArrowRight size={19} aria-hidden="true" /></Link></div>
+        <div className="section-heading"><h2 id="selected-title">Work, in practice</h2><Link href="/projects" className="text-link">The complete collection <ArrowRight size={19} aria-hidden="true" /></Link></div>
         <div className="selected-projects">{selected.map((project) => <Project key={project.title} {...project} />)}</div>
       </div>
     </section>

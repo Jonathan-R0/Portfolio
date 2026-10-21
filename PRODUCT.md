@@ -12,7 +12,7 @@ Recruiters and technical teams evaluating Jonathan's software engineering work. 
 
 ## Product Purpose
 
-Present Jonathan Rosenblatt's engineering skills, computing background, and real projects, with clear routes to his resume and contact details. Skills and projects should have balanced emphasis; skills precede the compact project preview on the home page.
+Present Jonathan Rosenblatt's engineering skills, computing background, and real projects, with clear routes to his resume and contact details. Skills remain prominent on Home. The owner replaced its project-preview section with a slowly moving row of seven selected transparent logos; the full project collection remains on `/projects` and is linked from the carousel.
 
 ## Capabilities and Constraints
 
@@ -27,6 +27,10 @@ The linked CV was retrieved and read in October 2026. It confirms Teaching Assis
 ## Brand Commitments
 
 Jonathan David Rosenblatt; backend development; Computer Engineering at FIUBA; Argentina. The owner rejected the violet/lavender palette and selected a light neutral palette with restrained blue accents and no large color blocks.
+
+The owner requested text-only personal introductions without the illustrated portrait. Home uses a local transparent-logo carousel after Skills, without a client/employment/endorsement heading or implied relationship claims. Logo sources and processing are recorded in `public/logos/sources.json`.
+
+The owner confirmed that the logos cover direct projects, work through third parties, and demos. Auting received a demo with positive feedback, but no subsequent engagement followed. A discreet visible context line and native expandable “About these projects” disclosure beneath the carousel explain this distinction; do not describe every logo as a direct client.
 
 ## Product Principles
 
