@@ -23,6 +23,7 @@ export function HoverEffect({ items }: { items: HoverItem[] }) {
       <div className="skill-hover-grid">
         {items.map((item, index) => (
           <Link
+            prefetch={false}
             key={item.title}
             href={item.link}
             target={item.link.startsWith("https://") ? "_blank" : undefined}

@@ -16,7 +16,7 @@ export default function Teaching() {
         <p className="teaching-meta">{teaching.institution} · {teaching.since}</p>
         <p>{teaching.description}</p>
         <p>{teaching.teamDescription}</p>
-        <Link href={localizeHref("/aboutme#teaching", locale)} className="text-link">
+        <Link prefetch={false} href={localizeHref("/aboutme#teaching", locale)} className="text-link">
           {teaching.link} <ArrowUpRight size={19} aria-hidden="true" />
         </Link>
       </div>

@@ -181,7 +181,7 @@ export default function LogoCarousel() {
       {tooltip ? <TooltipCard id={tooltipId} title={logos[tooltip.index].name} context={copy.entries[tooltip.index].context}
         description={copy.entries[tooltip.index].description} anchor={tooltip.anchor} onEnter={keepTooltip} onLeave={closeTooltip} /> : null}
       <div className="logo-carousel-actions">
-        <Link className="text-link" href={localizeHref("/projects", locale)}>{copy.explore} <ArrowUpRight size={17} aria-hidden="true" /></Link>
+        <Link prefetch={false} className="text-link" href={localizeHref("/projects", locale)}>{copy.explore} <ArrowUpRight size={17} aria-hidden="true" /></Link>
         <button className="logo-motion-control" type="button" onClick={() => setPaused((value) => !value)} aria-label={paused ? copy.resume : copy.pause}>
           {paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
           <span>{paused ? copy.playLabel : copy.pauseLabel}</span>

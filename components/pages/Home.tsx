@@ -20,7 +20,7 @@ export default function Home() {
         <h2 id="about-preview-title">{home.title}<br />{home.titleEnd}</h2>
         <div>
           <p>{home.intro}</p>
-          <Link href={localizeHref("/aboutme", locale)} className="text-link">{home.about} <ArrowUpRight size={19} aria-hidden="true" /></Link>
+          <Link prefetch={false} href={localizeHref("/aboutme", locale)} className="text-link">{home.about} <ArrowUpRight size={19} aria-hidden="true" /></Link>
         </div>
       </section>
     </main>
