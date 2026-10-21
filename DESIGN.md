@@ -174,7 +174,7 @@ Order: hero, skills, logo carousel, teaching, About preview. Hero top padding is
 
 Two identical seven-item flex groups form a seamless track, moving horizontally by half its width over (80s), linear and infinite. Each desktop item is (152px × 80px), gap (64px); mobile items are (128px × 72px), gap (40px). Artwork is contained at most (152px × 64px), mobile (128px × 56px); compact symbols use (72px), mobile (60px). The overflow viewport has a soft horizontal edge mask. A visible Pause/Play control and Explore projects link sit beneath it. IntersectionObserver and document visibility stop offscreen/hidden-page motion; hover pauses the row. Reduced motion disables animation, hides the duplicate and pause button, removes the edge mask, and wraps all seven originals into a static accessible list. No carousel dependency or remote image requests are used.
 
-The selected-work layout documented below describes the retained, unused preview component; it is no longer rendered on Home. `/projects` retains the complete project collection and source links.
+The former selected-work preview component and its image-specific styles have been removed. `/projects` retains the complete text-only project collection and source links.
 
 The logo viewport also supports direct horizontal dragging with pointer capture, grab/grabbing cursors and disabled native image dragging. Dragging scrubs the existing CSS animation timeline in proportion to pointer distance, wrapping seamlessly within one loop; it does not introduce a competing transform or render on every pointer move. Releasing outside the viewport or cancelling the pointer ends the gesture. Explicit Pause remains respected. Left/right arrow keys browse by (200px) while keyboard focus pauses autoplay; touch keeps native vertical page panning through `touch-action: pan-y`. Reduced motion retains the static full-logo layout.
 
@@ -182,7 +182,7 @@ A quiet (0.78rem) context line below the carousel distinguishes direct projects,
 
 Skills use (60px) vertical padding, then (40px). Each linked ledger row has (1fr / 1.25fr / auto) columns, (28px) gap and (26px 12px 26px 0) padding. At (1150px) the cue moves below the skills in column two; the category spans both rows. Mobile becomes one column with (16px) gaps and (24px 8px 24px 0) padding. Wrapping skills use (16px) column gaps; mobile adds (2px) row gaps.
 
-Selected work has (20px / 64px) vertical padding and three equal columns with (24px) gaps. At mobile it uses (8px / 40px) section padding and three equal-status rows, each (88px / minmax(0, 1fr)) with (20px) gap, (24px) bottom padding and a divider; row gaps are (28px). Selected descriptions and metadata are never hidden. Desktop copy flexes so metadata/action placement remains consistent across entries.
+Home no longer renders project previews. Its logo carousel links directly to the text-only project collection.
 
 Teaching and About preview use (0.9fr / 1.1fr) columns with (64px) gaps. Teaching padding is (44px / 56px), About preview (36px / 64px). Mobile stacks them with gaps (28px) and (24px), and padding (32px / 40px) and (28px / 40px), respectively.
 
@@ -190,7 +190,7 @@ Teaching and About preview use (0.9fr / 1.1fr) columns with (64px) gaps. Teachin
 
 Inner pages use (48px / 80px) vertical padding, then (32px / 44px). Intro is (1.1fr / 1fr), (40px) gap, (36px) bottom padding and (40px) bottom margin, with an ink rule. Mobile stacks with (24px) gap and (28px) bottom padding/margin.
 
-The complete Projects collection is a vertical ledger, not a card grid: six image/copy entries in (1fr / 1fr) columns, (40px) gap, (32px) vertical padding and bottom rules. First entry has no top padding. Gap reduces to (28px) at intermediate widths. Mobile stacks image above copy with (24px) gap and (28px) vertical padding. Desktop actions align toward the bottom of the copy column.
+The complete Projects collection is a text-only vertical ledger: six title/content entries in (1.1fr / 1fr) columns, (40px) gap, (32px) vertical padding and bottom rules. First entry has no top padding. Gap reduces to (28px) at intermediate widths. Mobile stacks titles above details with (16px) gap and (28px) vertical padding. Titles are semantic h2 headings in authored case, (2.5rem / 1.1), mobile (2.25rem). Descriptions use (0.94rem / 1.7), followed by wrapping metadata and direct project actions. No image column, mat or placeholder remains.
 
 About is text-led: a perspective heading and location on the left, biography and GitHub action on the right in (1.1fr / 1fr) columns with (40px) gap, then (36px) at intermediate widths. Mobile stacks with (32px) gap. A full-width ruled education summary follows, using the same columns with (36px) top margin and (24px) top padding; mobile stacks with (28px) top margin. The About wrapper has no bottom padding. Academic journey follows, then shared Skills; journey padding is (64px / 12px), mobile (40px / 8px), and following Skills top padding is (28px).
 
@@ -226,9 +226,9 @@ Each whole row is one link: languages/frameworks to `/projects#numi`, data/infra
 
 The Aceternity-derived `HoverEffect` uses per-instance `LayoutGroup`, `AnimatePresence` and shared `layoutId="skill-highlight"`. Hover and keyboard focus activate the same soft-blue background with opacity entry/exit and explicit duration (0.2s); no custom shared-layout easing is specified. Content stays stationary. Reduced motion omits the shared layout ID and uses zero duration for an immediate highlight.
 
-### Project previews and complete ledger
+### Complete project ledger
 
-Numi, User CRUD and Goodreads Backend receive equal selected-work treatment. All six original records appear on Projects in source order. Each article has a stable slug anchor, contained image, title, description, deduplicated technology list and optional external action. GitHub yields “View source”; an alternate URL yields “Visit project”; no URL yields no action. `important` selects home entries but does not create a featured visual variant. Base image mats use (16px) padding, selected intermediate-width mats (10px), mobile selected mats (8px); full ledger mats use (24px), then mobile (20px). The first full-ledger image is eager; all remaining project images are lazy. External new-tab actions use `noopener noreferrer` and project actions include screen-reader-only title context. Decorative SVGs are hidden from assistive technology.
+All six original records appear on Projects in source order. Each article has a stable slug anchor, an accessible title relationship, description, deduplicated technology list and optional external action. GitHub yields “View source”; an alternate URL yields “Visit project”; no URL yields no action. The image field has been removed from project data and all six preview assets deleted at the owner's request. External new-tab actions use `noopener noreferrer` and project actions include screen-reader-only title context. Decorative SVGs are hidden from assistive technology.
 
 ### Biography, teaching and academic journey
 
@@ -240,17 +240,12 @@ Hero and footer use the centralized `lib/contact.ts` email. Footer exposes email
 
 ### Asset and component provenance
 
-All shipping rasters were already present in the owner's repository and are reused unchanged in this redesign. No new/generated shipping raster or binary modification belongs to this pass. `PRODUCT.md` identifies these as existing evidence; `public/projects.json` supplies the project-image associations:
+Project preview rasters and their two provenance sidecars were deleted at the owner's request. Project data no longer contains image associations. Remaining relevant assets are:
 
 | Existing file | Used as |
 | --- | --- |
 | `public/profileimage.jpg` | Existing social metadata image only; no longer rendered on Home or About. |
-| `public/img/numi.png` | Numi preview. |
-| `public/img/usercrud.png` | User CRUD preview. |
-| `public/img/goodreads.png` | Goodreads Backend preview. |
-| `public/img/wolfenstein.png` | Wolfenstein 3D preview. |
-| `public/img/earthquake.png` | Machine Learning Competiton preview (source title retained). |
-| `public/img/msteams.png` | MS Teams Notifier preview. |
+| `public/logos/*.png` | Owner-selected transparent silver carousel logos; sources and processing are recorded in `public/logos/sources.json`. |
 
 Repository provenance is the available origin record; original artist, capture author, upstream license and generation history are not established by these files and are not invented here. This documentation records origins without embedding metadata into binaries. Interface arrows are inline SVGs rendered through the existing `lucide-react` dependency. `components/ui/card-hover-effect.tsx` and `components/ui/timeline.tsx` credit Manu Arora / Aceternity UI: [Card Hover Effect](https://ui.aceternity.com/components/card-hover-effect) and [Timeline](https://ui.aceternity.com/components/timeline). They reuse existing `framer-motion`. Registry/source and CV verification notes remain in `.impeccable/review/aceternity-sources.md`; its older card terminology is historical, while the built ledger is documented here.
 

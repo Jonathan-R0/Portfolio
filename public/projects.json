@@ -2,7 +2,6 @@
   {
     "title": "Numi",
     "description": "Gamification Platform for Recognition and Rewards in the Workplace",
-    "image": "/img/numi.png",
     "technologies": [
       "Typescript",
       "NestJS",
@@ -16,24 +15,8 @@
     "alternate_link": "https://numiplatform.tech"
   },
   {
-    "title": "User CRUD",
-    "description": "Basic spring crud with user creation, following, auth, persistence and management.",
-    "image": "/img/usercrud.png",
-    "technologies": [
-      "Java",
-      "Spring",
-      "Hibernate",
-      "PostgreSQL",
-      "Maven",
-      "Docker"
-    ],
-    "github": "https://github.com/Jonathan-R0/Social-Network-CRUD",
-    "important": true
-  },
-  {
     "title": "Goodreads Backend",
     "description": "Goodreads imitation with auth, book management, news, notifications, questions, quotes, readings and users",
-    "image": "/img/goodreads.png",
     "technologies": [
       "Typescript",
       "NestJS",
@@ -48,7 +31,6 @@
   {
     "title": "Wolfenstein 3D",
     "description": "C++ Wolfenstein with local multiplayer.",
-    "image": "/img/wolfenstein.png",
     "technologies": ["C++", "C", "SDL", "CMake", "Shell"],
     "github": "https://github.com/Jonathan-R0/Wolfenstein-FIUBA",
     "important": false
@@ -56,7 +38,6 @@
   {
     "title": "Machine Learning Competiton",
     "description": "Predicting building damages after an earthquake.",
-    "image": "/img/earthquake.png",
     "technologies": ["Python", "Pandas", "Numpy", "Scikit-learn", "Jupyter"],
     "github": "https://github.com/Jonathan-R0/Machine-Learning",
     "important": false
@@ -64,9 +45,22 @@
   {
     "title": "MS Teams Notifier",
     "description": "📱Simple python program for people that can't log in their phones, that notifies you whenever a Microsoft Teams notification appears on your PC.",
-    "image": "/img/msteams.png",
     "technologies": ["Python", "Win10Toast"],
     "github": "https://github.com/Jonathan-R0/Microsoft-Teams-Phone-Notifier",
     "important": false
+  },
+  {
+    "title": "User CRUD",
+    "description": "Basic spring crud with user creation, following, auth, persistence and management.",
+    "technologies": [
+      "Java",
+      "Spring",
+      "Hibernate",
+      "PostgreSQL",
+      "Maven",
+      "Docker"
+    ],
+    "github": "https://github.com/Jonathan-R0/Social-Network-CRUD",
+    "important": true
   }
 ]

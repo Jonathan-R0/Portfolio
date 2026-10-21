@@ -148,21 +148,12 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
   .logo-group[aria-hidden="true"], .logo-motion-control { display: none; }
 }
 
-/* Images are evidence, framed without tinting or cropping. */
-.selected-work { padding-block: 20px 64px; }
-.selected-projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+/* Project evidence is carried by descriptions, stacks and direct source links. */
 .project-entry { min-width: 0; scroll-margin-top: 32px; }
-.project-visual { display: flex; justify-content: center; align-items: center; background: var(--surface); padding: 16px; aspect-ratio: 16 / 11; overflow: hidden; border: 1px solid var(--line); }
-.project-image { width: 100%; height: 100%; object-fit: contain; object-position: center; }
-.project-copy { padding-top: 20px; }
-.project-copy h3 { font-size: 1.8rem; font-weight: 600; line-height: 1.15; margin-bottom: 10px; }
-.project-copy > p { font-size: 0.86rem; color: var(--quiet); line-height: 1.7; max-width: 58ch; }
+.project-title { font-size: 2.5rem; font-weight: 600; line-height: 1.1; text-transform: none; }
+.project-copy > p { font-size: 0.94rem; color: var(--quiet); line-height: 1.7; max-width: 58ch; }
 .technology-list { display: flex; flex-wrap: wrap; gap: 4px 12px; color: var(--quiet); font-size: 0.68rem; line-height: 1.6; margin-block: 18px 12px; }
 .technology-list li { border-bottom: 1px solid var(--line); padding-bottom: 2px; }
-.selected-projects .project-entry { display: flex; flex-direction: column; }
-.selected-projects .project-copy { display: flex; flex-direction: column; flex: 1; }
-.selected-projects .technology-list { margin-top: auto; padding-top: 18px; }
-.selected-projects .text-link { align-self: flex-start; }
 
 .teaching-section { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; border-top: 1px solid var(--ink); padding-block: 44px 56px; }
 .teaching-heading h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1; }
@@ -173,19 +164,17 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
 .about-strip h2 { font-size: 2.5rem; line-height: 1.05; }
 .about-strip p { max-width: 43ch; font-size: 0.9rem; color: var(--quiet); margin-bottom: 12px; }
 
-/* The complete collection expands into a generous image-and-copy ledger. */
+/* The complete collection is a text-led ledger with a shared title/content grid. */
 .inner-page { padding-block: 48px 80px; }
 .page-intro { display: grid; grid-template-columns: 1.1fr 1fr; align-items: end; gap: 40px; padding-bottom: 36px; margin-bottom: 40px; border-bottom: 1px solid var(--ink); }
 .page-intro h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.98; }
 .page-intro > p { color: var(--quiet); font-size: 0.94rem; max-width: 44ch; }
 .project-grid { display: flex; flex-direction: column; }
-.project-grid .project-entry { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding-block: 32px; border-bottom: 1px solid var(--line); }
+.project-grid .project-entry { display: grid; grid-template-columns: 1.1fr 1fr; align-items: start; gap: 40px; padding-block: 32px; border-bottom: 1px solid var(--line); }
 .project-grid .project-entry:first-child { padding-top: 0; }
-.project-grid .project-visual { aspect-ratio: 16 / 11; padding: 24px; }
-.project-grid .project-copy { display: flex; flex-direction: column; align-items: start; padding-block: 4px; }
-.project-grid .project-copy h3 { font-size: 2.5rem; }
+.project-grid .project-copy { display: flex; flex-direction: column; align-items: start; }
 .project-grid .technology-list { margin-bottom: 12px; }
-.project-grid .text-link { margin-top: auto; }
+.project-grid .text-link { margin-top: 4px; }
 
 .about-body { display: grid; grid-template-columns: 1.1fr 1fr; align-items: start; gap: 40px; }
 .about-perspective h2 { font-size: 2.75rem; line-height: 1.05; margin-bottom: 20px; }
@@ -238,8 +227,6 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
   .hero-person p { max-width: 18ch; }
   .hero-register { flex-wrap: wrap; gap: 4px 20px; }
   .hero-register .work-anchor { margin-left: auto; }
-  .selected-projects { gap: 20px; }
-  .selected-projects .project-visual { padding: 10px; }
   .about-body { gap: 36px; }
   .project-grid .project-entry { gap: 28px; }
 }
@@ -288,15 +275,6 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
   .skill-description { max-width: 40ch; font-size: 0.76rem; margin-top: 6px; }
   .skill-list { font-size: 1.9rem; gap: 2px 16px; }
   .skill-project-link { grid-column: auto; font-size: 0.74rem; min-height: 28px; }
-  .selected-work { padding-block: 8px 40px; }
-  .selected-projects { grid-template-columns: 1fr; gap: 28px; }
-  .selected-projects .project-entry { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
-  .selected-projects .project-visual { aspect-ratio: 1; padding: 8px; }
-  .selected-projects .project-copy { display: block; padding-top: 0; }
-  .selected-projects .project-copy h3 { font-size: 1.65rem; }
-  .selected-projects .project-copy > p { font-size: 0.8rem; }
-  .selected-projects .technology-list { margin-block: 14px 4px; padding-top: 0; font-size: 0.65rem; gap: 4px 10px; }
-  .selected-projects .text-link { font-size: 0.78rem; }
   .teaching-section { grid-template-columns: 1fr; gap: 28px; padding-block: 32px 40px; }
   .teaching-heading h2 { font-size: 2.75rem; }
   .teaching-copy h3 { font-size: 0.9rem; }
@@ -307,10 +285,8 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
   .page-intro { grid-template-columns: 1fr; gap: 24px; margin-bottom: 28px; padding-bottom: 28px; }
   .page-intro h1 { font-size: clamp(3.3rem, 14vw, 4.5rem); }
   .page-intro > p { font-size: 0.9rem; }
-  .project-grid .project-entry { grid-template-columns: 1fr; gap: 24px; padding-block: 28px; }
-  .project-grid .project-copy h3 { font-size: 2.25rem; }
-  .project-grid .project-visual { padding: 20px; }
-  .project-grid .project-copy { padding: 0; }
+  .project-grid .project-entry { grid-template-columns: 1fr; gap: 16px; padding-block: 28px; }
+  .project-title { font-size: 2.25rem; }
   .project-grid .technology-list { margin-bottom: 12px; }
   .about-body { grid-template-columns: 1fr; gap: 32px; }
   .about-perspective h2 { font-size: 2.5rem; margin-bottom: 12px; }

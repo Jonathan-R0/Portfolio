@@ -1,5 +1,11 @@
 # Design history
 
+## Follow-up — Text-only project collection
+
+- Owner requested removal of all `/projects` imagery and the corresponding files.
+- Replaced image/copy rows with title/content rows, retaining all six descriptions, technology lists, external destinations and stable project anchors. Mobile stacks titles above their details.
+- Deleted the six referenced preview PNGs, their two provenance sidecars and the unused former Home preview component. Logo carousel assets are separate.
+
 ## Follow-up — Uniform silver logos
 
 - Owner requested a uniform silver palette for all seven carousel logos and supplied `public/logos.backup/` as the original-color backup.

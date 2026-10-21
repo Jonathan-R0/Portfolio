@@ -89,22 +89,22 @@
   ],
   "narrative": {
     "northStar": "Engineering folio",
-    "overview": "An open engineering folio pairs a cool gray marginal index with nearly white reading sheets. Condensed, uppercase title blocks establish identity; Geist prose and small technical metadata keep the evidence readable. Restrained blue marks destinations, focus and small annotations rather than broad color fields.\n\nThe system is square-cut and flat: ruled capability rows, contained original project imagery, text-led biography and an academic timeline. Home and About have no visible portrait, following the owner's request. About pairs a perspective/location column with biography, followed by a full-width education summary. Product facts remain in `PRODUCT.md`; route strategy and the roulette direction contract remain in `.impeccable/surface-home.md`.",
+    "overview": "An open engineering folio pairs a cool gray marginal index with nearly white reading sheets. Condensed title blocks establish identity; Geist prose and small technical metadata keep the evidence readable. Restrained blue marks destinations, focus and small annotations rather than broad color fields.\n\nThe system is square-cut and flat: ruled capability rows, a silver-logo carousel on Home, a text-only project ledger, text-led biography and an academic timeline. All six project preview images and their data references were removed at the owner's request. Home and About have no visible portrait. Product facts remain in `PRODUCT.md`; route strategy remains in `.impeccable/surface-home.md`.",
     "keyCharacteristics": [
       "A fixed desktop marginal index becomes a two-row in-flow header on smaller screens.",
       "Barlow Condensed titles and capability lists contrast with Geist prose and metadata.",
-      "Open skills rows lead into equally treated selected projects and a complete project ledger.",
+      "Open skills rows lead into a silver-logo carousel; Projects presents all six projects in a text-only ledger.",
       "Blue interaction annotations move without hiding or moving the evidence itself."
     ],
     "rules": [
       { "name": "The Restrained Accent Rule", "body": "Keep broad regions paper or neutral gray; reserve blue for actions, focus and small annotations.", "section": "colors" },
       { "name": "The Two Voices Rule", "body": "Use Barlow Condensed for identity, headings and prominent capability lists; use Geist for prose, navigation, actions and technical metadata.", "section": "typography" },
-      { "name": "The Flat Evidence Rule", "body": "Frame original evidence with neutral mats, fine rules and space; keep entries flat at rest and on hover.", "section": "elevation" }
+      { "name": "The Flat Evidence Rule", "body": "Present project evidence through descriptions, technology lists and direct source links, using fine rules and open space.", "section": "elevation" }
     ],
     "dos": [
       "Do preserve paper and gray fields with restrained blue actions and focus.",
       "Do pair Barlow Condensed identity and capability lists with Geist prose and metadata.",
-      "Do retain square mats, contained original imagery and open ruled ledgers.",
+      "Do retain text-led project rows, source links and open ruled ledgers.",
       "Do provide equivalent hover/focus annotation and immediate reduced-motion states."
     ],
     "donts": [

@@ -20,7 +20,7 @@ Next.js App Router, TypeScript, Tailwind CSS, static export for GitHub Pages. Pr
 
 ## Evidence on Hand
 
-Project descriptions and links in public/projects.json; existing portrait at public/profileimage.jpg and project images at public/img/. Existing resume hosted on Google Drive. Contact email confirmed by the owner: jonathanr022000@gmail.com, centralized in lib/contact.ts. GitHub and LinkedIn destinations are in the shared components.
+Project descriptions, technologies and links are in public/projects.json. The owner requested removing all six project preview images and their files; `/projects` is a text-only ledger. The existing portrait at public/profileimage.jpg is retained for social metadata only. Existing resume hosted on Google Drive. Contact email confirmed by the owner: jonathanr022000@gmail.com, centralized in lib/contact.ts. GitHub and LinkedIn destinations are in the shared components.
 
 The linked CV was retrieved and read in October 2026. It confirms Teaching Assistant for Software Engineering I from August 2025 to present, guiding 14 students per semester across two teams of 7 through API design, testing, project management and development. It also confirms Computer Engineering graduation in August 2026. The owner explicitly identifies the teaching role as FIUBA. Profile details are centralized in lib/profile.ts. The latest owner-provided contact email takes precedence over the different address printed on the CV.
 

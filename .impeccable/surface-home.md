@@ -18,6 +18,6 @@ Signature interaction: a shared blue annotation travels between open capability 
 
 Owner-requested motion extension: seven transparent local logos travel continuously on an 80-second CSS loop. Pause/Play, hover pause, offscreen/document-visibility suspension and a fully visible static reduced-motion layout preserve control. Sources and matte-processing details live in `public/logos/sources.json`; no relationship claims accompany the logos.
 
-Cross-surface: Projects is an image-and-description ledger. About is a text-led biographical folio: perspective and location opposite prose, followed by a ruled education summary and the existing academic timeline. Teaching remains verified against the linked CV. No biography, outcomes or availability claims are invented. Execution is code-led under the user's explicit autonomous roulette request.
+Cross-surface: Projects is a text-only title-and-description ledger, with technologies and direct source/demo links. The owner requested deleting the project images and their files. About is a text-led biographical folio: perspective and location opposite prose, followed by a ruled education summary and the existing academic timeline. Teaching remains verified against the linked CV. No biography, outcomes or availability claims are invented. Execution is code-led under the user's explicit autonomous roulette request.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
