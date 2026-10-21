@@ -1,5 +1,11 @@
 # Design history
 
+## Follow-up — Aceternity interaction suite
+
+- Owner approved contextual logo tooltips, restrained magnetic actions, project-row shared hover, inline expandable notes, one hero pointer highlight and compact sticky mobile navigation.
+- Maintained silver assets, text-only project entries, User CRUD last, desktop marginal index and reduced-motion paths. No dependencies added.
+- Corrected Creative Coefficient identity and recorded direct/consultancy/academic/demo distinctions from the owner. Source attribution and evidence: `.impeccable/aceternity-additions.md`.
+
 ## Follow-up — Text-only project collection
 
 - Owner requested removal of all `/projects` imagery and the corresponding files.

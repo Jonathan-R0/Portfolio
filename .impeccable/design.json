@@ -21,7 +21,7 @@
       "label": { "displayName": "Technology Metadata", "purpose": "Small wrapping Geist labels with individual bottom rules, not interactive pills." },
       "skill-list": { "displayName": "Capability List", "purpose": "Prominent wrapping Barlow Condensed skills; mobile 1.9rem." }
     },
-    "shadows": [],
+    "shadows": [{ "name": "tooltip-card", "value": "0 8px 32px #24292c24", "purpose": "Portaled organization context card only; project rows and page surfaces remain flat." }],
     "motion": [
       { "name": "arrow-feedback", "value": "transform 180ms ease-out; translate(2px, -2px)", "purpose": "Text-action SVG hover feedback; reduced motion removes transition and transform." },
       { "name": "anchor-scroll", "value": "scroll-behavior: smooth; scroll-padding-top: 32px", "purpose": "In-page navigation; Skills, project entries and academic journey also have 32px scroll margins. Reduced motion switches to auto." },

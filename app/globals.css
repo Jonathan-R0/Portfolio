@@ -61,6 +61,31 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
 .text-link svg { transition: transform 180ms ease-out; }
 .text-link:hover svg { transform: translate(2px, -2px); }
 .name-period { color: var(--accent-color); }
+.magnetic-target, .magnetic-content { display: inline-block; max-width: 100%; }
+.resume-magnetic, .resume-magnetic .magnetic-content, .resume-magnetic .resume-link { width: 100%; }
+.hero-intro > .magnetic-target { margin-top: 8px; }
+.pointer-highlight { position: relative; display: inline-block; white-space: nowrap; }
+.pointer-highlight-frame { position: absolute; inset: -4px -7px; border: 1px solid var(--accent-color); pointer-events: none; }
+.pointer-highlight-icon { position: absolute; bottom: -13px; right: -17px; color: var(--accent-color); fill: var(--paper); pointer-events: none; }
+.nav-scroll-marker { position: absolute; top: 120px; width: 1px; height: 1px; pointer-events: none; }
+.logo-trigger { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 4px; border: 0; background: none; cursor: inherit; touch-action: pan-y; }
+.logo-viewport:has(.logo-trigger:focus-visible) .logo-track { animation-play-state: paused; }
+.tooltip-card { position: fixed; z-index: 80; padding: 20px; color: var(--ink); background: var(--paper); box-shadow: 0 8px 32px #24292c24; font-size: 0.83rem; line-height: 1.65; }
+.tooltip-card h3 { font-size: 1.6rem; line-height: 1.1; margin-bottom: 10px; }
+.tooltip-card .tooltip-context { color: var(--accent-color); font-size: 0.72rem; margin-bottom: 12px; }
+.tooltip-card > p:last-child { color: var(--quiet); }
+.project-entry { position: relative; isolation: isolate; }
+.project-entry > .project-title, .project-entry > .project-copy { position: relative; }
+.project-hover-background { position: absolute; inset: 0 -16px; z-index: -1; pointer-events: none; background: var(--accent-soft); }
+.project-details { width: 100%; margin-top: 16px; border-top: 1px solid var(--line); }
+.project-details summary { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; color: var(--accent-color); font-size: 0.8rem; list-style: none; cursor: pointer; }
+.project-details summary::-webkit-details-marker { display: none; }
+.project-details summary:hover { text-decoration: underline; text-underline-offset: 4px; }
+.project-details summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+.project-details[open] summary svg { transform: rotate(180deg); }
+.project-details-body { padding-block: 8px 16px; font-size: 0.88rem; color: var(--quiet); }
+.project-details-body h3 { color: var(--ink); font-size: 1.5rem; margin-bottom: 12px; }
+.project-details-body p + p { margin-top: 12px; }
 
 /* The marginal index stays distinct from the folio's reading surface. */
 .site-header { position: fixed; inset: 0 auto 0 0; z-index: 20; width: var(--rail-width); background: var(--surface); border-right: 1px solid var(--line); }
@@ -100,7 +125,7 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
 .toolbox { padding-block: 60px; scroll-margin-top: 32px; }
 .skill-hover-grid { display: flex; flex-direction: column; border-top: 1px solid var(--ink); }
 .skill-hover-item { display: block; position: relative; border-bottom: 1px solid var(--line); }
-.skill-hover-background { position: absolute; inset: 0; background: var(--accent-soft); pointer-events: none; }
+.skill-hover-background { position: absolute; inset: 0 -12px; background: var(--accent-soft); pointer-events: none; }
 .skill-card-content { position: relative; display: grid; grid-template-columns: 1fr 1.25fr auto; align-items: center; gap: 28px; padding: 26px 12px 26px 0; }
 .skill-category h3 { font-family: var(--font-body), sans-serif; font-size: 0.8rem; font-weight: 550; line-height: 1.4; }
 .skill-description { max-width: 30ch; color: var(--quiet); font-size: 0.75rem; line-height: 1.65; margin-top: 8px; }
@@ -125,13 +150,6 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
 .logo-motion-control { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 4px 0 4px 12px; background: none; border: 0; color: var(--quiet); font-size: 0.75rem; cursor: pointer; }
 .logo-motion-control:hover { color: var(--accent-color); }
 .logo-context { max-width: 75ch; margin-top: 16px; color: var(--quiet); font-size: 0.78rem; line-height: 1.7; }
-.logo-context summary { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer; list-style: none; text-decoration: underline; text-underline-offset: 0.3em; }
-.logo-context summary::-webkit-details-marker { display: none; }
-.logo-context summary:hover { color: var(--accent-color); }
-.logo-context summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
-.logo-context details[open] summary svg { transform: rotate(180deg); }
-.logo-context-copy { padding-block: 4px 8px; font-size: 0.82rem; }
-.logo-context-copy p + p { margin-top: 12px; }
 @keyframes logo-drift { to { transform: translateX(-50%); } }
 @media (max-width: 600px) {
   .logo-carousel { padding-block: 4px 32px; }
@@ -312,4 +330,17 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .text-link:hover svg { transform: none; }
+}
+
+/* Aceternity Resizable Navbar adaptation: a solid, shrinking mobile strip. */
+@media (max-width: 900px) {
+  html { scroll-padding-top: 160px; }
+  .site-header { position: sticky; top: 0; z-index: 40; }
+  .header-inner.page-width { transition: padding 180ms ease-out, gap 180ms ease-out, width 180ms ease-out; }
+  .resume-magnetic { grid-column: 2; grid-row: 1; }
+  .site-header[data-compact="true"] .header-inner.page-width { padding-block: 8px 4px; gap: 4px 16px; width: calc(100% - 32px); }
+  .site-header[data-compact="true"] .monogram { font-size: 2rem; }
+  .site-header[data-compact="true"] .wordmark-name { display: none; }
+  .site-header[data-compact="true"] .resume-link { min-height: 36px; }
+  .site-header[data-compact="true"] nav a { min-height: 36px; }
 }

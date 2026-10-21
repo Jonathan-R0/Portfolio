@@ -178,9 +178,11 @@ The former selected-work preview component and its image-specific styles have be
 
 The logo viewport also supports direct horizontal dragging with pointer capture, grab/grabbing cursors and disabled native image dragging. Dragging scrubs the existing CSS animation timeline in proportion to pointer distance, wrapping seamlessly within one loop; it does not introduce a competing transform or render on every pointer move. Releasing outside the viewport or cancelling the pointer ends the gesture. Explicit Pause remains respected. Left/right arrow keys browse by (200px) while keyboard focus pauses autoplay; touch keeps native vertical page panning through `touch-action: pan-y`. Reduced motion retains the static full-logo layout.
 
-A quiet (0.78rem) context line below the carousel distinguishes direct projects, third-party work and demos. Native `details`/`summary` titled “About these projects” discloses the fuller explanation and the owner-confirmed Auting demo outcome. The summary has a (44px) target, visible keyboard focus and a rotating chevron; body copy is (0.82rem), capped at (75ch). This is discoverable supporting context, not hidden legal copy or an assertion that every logo represents a direct client.
+A quiet (0.78rem) hint below the carousel reads “Hover or tap a logo to learn about my involvement.” Individual tooltips provide the professional, academic and demo context on hover, tap or keyboard focus. The owner requested removing the redundant general explanation and “About these projects” disclosure once tooltips were available.
 
 Skills use (60px) vertical padding, then (40px). Each linked ledger row has (1fr / 1.25fr / auto) columns, (28px) gap and (26px 12px 26px 0) padding. At (1150px) the cue moves below the skills in column two; the category spans both rows. Mobile becomes one column with (16px) gaps and (24px 8px 24px 0) padding. Wrapping skills use (16px) column gaps; mobile adds (2px) row gaps.
+
+The shared Skills hover/focus background extends (12px) beyond both horizontal edges (`inset: 0 -12px`), giving the left-aligned text breathing room without shifting its baseline or neighboring section alignment. This applies on Home and About at all breakpoints.
 
 Home no longer renders project previews. Its logo carousel links directly to the text-only project collection.
 
@@ -209,6 +211,17 @@ The rendered folio uses no shadows, glass, gradients or lifted cards. Neutral ra
 Rendered image mats, capability highlights, resume links and timeline nodes are square-cut, with no explicit border radius. Consequently there is no extracted rounded scale. The compatibility `--radius: 0.125rem` does not govern these visible components. Project mats clip overflow, have (1px) divider borders, use (16:11) proportions and contain images without cropping. Selected mobile mats are square. Main rules and resume underline are (1px); timeline track/beam are (1px), nodes are solid (9px) squares. Technology labels have individual (1px) bottom rules and (2px) bottom padding; they are plain metadata, not pills.
 
 ## Components
+
+### Owner-approved Aceternity interaction extensions
+
+- **Tooltip Card:** portaled white cards with soft offset shadows, organization title, blue relationship label and quiet explanatory prose. Maximum width (288px), viewport side clearance (16px); opens on logo hover, keyboard focus or tap. Escape, outside pointer input and scrolling dismiss hover cards; focused cards follow their trigger on scroll. Moving between trigger and card allows a (160ms) grace period. Cards suspend the carousel; a drag over (5px) dismisses them and suppresses the resulting click. Duplicated logos are excluded from keyboard order and the accessibility tree.
+- **Magnetic Button:** only the hero email, footer email and resume links receive up to (4px) of spring-based mouse displacement. Motion values avoid pointer-driven React renders; focus resets the effect. Touch and reduced motion remain stationary.
+- **Project Hover Effect:** one shared soft-blue background travels between project rows on hover or focus, with no text displacement. Reduced motion removes layout sharing and duration.
+- **Expandable Card:** adapted to inline native `details`/`summary`, not image modals. “Project notes” reveals project focus and documented setup/capabilities, sourced from existing portfolio records and public repository READMEs. Descriptions, stacks and source links stay visible when closed. No invented contributions, metrics or screenshots.
+- **Pointer Highlight:** a thin blue annotation around “the inside out.” reveals once on entering view over (0.65s); words stay visible. A small decorative pointer completes the annotation; reduced motion shows a static frame.
+- **Resizable Navbar:** desktop rail remains unchanged. Below (900px), the solid header is sticky and becomes more compact after a (120px) document marker leaves view: inner padding (8px / 4px), (32px) monogram, hidden wordmark expansion and (36px) navigation/resume targets. Mobile scroll padding is (160px), keeping anchors clear. Reduced motion disables CSS transitions. No translucent pill or duplicate navigation is introduced.
+
+Source attribution: Manu Arora / Aceternity UI, free registries for `tooltip-card`, `magnetic-button`, `pointer-highlight`, `resizable-navbar`, `expandable-card-demo-standard` and the existing `card-hover-effect`. All adapt to the installed `framer-motion` rather than adding `motion` or icon dependencies. Official source URLs and content evidence are recorded in `.impeccable/aceternity-additions.md`.
 
 ### Marginal index and navigation
 

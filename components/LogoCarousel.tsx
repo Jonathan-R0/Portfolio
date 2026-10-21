@@ -2,17 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState, type PointerEvent, type KeyboardEvent } from "react";
-import { ArrowUpRight, ChevronDown, Pause, Play } from "lucide-react";
+import { useEffect, useId, useRef, useState, type PointerEvent, type KeyboardEvent } from "react";
+import { ArrowUpRight, Pause, Play } from "lucide-react";
+import { TooltipCard } from "@/components/ui/tooltip-card";
 
 const logos = [
-  { name: "Geometric emblem", file: "multicolor-emblem", width: 200, height: 192, compact: true },
-  { name: "NEC", file: "nec", width: 600, height: 160 },
-  { name: "Arrow emblem", file: "green-arrow", width: 84, height: 111, compact: true },
-  { name: "Neighborhood Pal", file: "neighborhood-pal", width: 445, height: 240 },
-  { name: "Nexup", file: "nexup", width: 600, height: 189 },
-  { name: "FIUBA · Universidad de Buenos Aires", file: "fiuba", width: 600, height: 170 },
-  { name: "Auting", file: "auting", width: 600, height: 130 },
+  { name: "Creative Coefficient", file: "multicolor-emblem", width: 200, height: 192, compact: true, context: "Direct work · Consultancy", description: "I worked directly at Creative Coefficient, the consultancy through which I also contributed to other organizations’ projects." },
+  { name: "NEC", file: "nec", width: 600, height: 160, context: "Through Creative Coefficient", description: "I contributed to projects for NEC through Creative Coefficient, rather than through a direct engagement with NEC." },
+  { name: "Grunlot", file: "green-arrow", width: 84, height: 111, compact: true, context: "Through Creative Coefficient", description: "I contributed to Grunlot through Creative Coefficient, the consultancy where I worked, rather than through a direct engagement." },
+  { name: "Neighborhood Pal", file: "neighborhood-pal", width: 445, height: 240, context: "Through Creative Coefficient", description: "I contributed to Neighborhood Pal through Creative Coefficient, rather than through a direct engagement." },
+  { name: "Nexup", file: "nexup", width: 600, height: 189, context: "Current role · Backend development", description: "I currently work at Nexup, developing backend systems for medical software." },
+  { name: "FIUBA · Universidad de Buenos Aires", file: "fiuba", width: 600, height: 170, context: "Education · Academic projects", description: "I studied Computer Engineering and completed academic projects at FIUBA. I also teach Software Engineering I as a teaching assistant." },
+  { name: "Auting", file: "auting", width: 600, height: 130, context: "Demo proposal · No subsequent engagement", description: "I developed a demo that received positive feedback. It did not lead to a subsequent engagement with Auting." },
 ];
 
 export default function LogoCarousel() {
@@ -23,6 +24,43 @@ export default function LogoCarousel() {
   const [paused, setPaused] = useState(false);
   const [inView, setInView] = useState(false);
   const [pageVisible, setPageVisible] = useState(true);
+  const tooltipId = useId();
+  const [tooltip, setTooltip] = useState<{ index: number; anchor: DOMRect } | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const suppressClick = useRef(false);
+  const pointerStart = useRef(0);
+
+  function keepTooltip() { if (closeTimer.current) clearTimeout(closeTimer.current); }
+  function closeTooltip() { keepTooltip(); closeTimer.current = setTimeout(() => setTooltip(null), 160); }
+  function showTooltip(index: number, element: HTMLElement) {
+    if (drag.current) return;
+    keepTooltip();
+    setTooltip({ index, anchor: element.getBoundingClientRect() });
+  }
+  useEffect(() => {
+    const dismiss = () => setTooltip(null);
+    const onScroll = () => {
+      const focused = document.activeElement;
+      if (focused instanceof HTMLElement && focused.matches('.logo-trigger')) {
+        setTooltip((current) => current ? { ...current, anchor: focused.getBoundingClientRect() } : null);
+      } else dismiss();
+    };
+    const escape = (event: globalThis.KeyboardEvent) => { if (event.key === "Escape") dismiss(); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", dismiss);
+    window.addEventListener("keydown", escape);
+    const outside = (event: globalThis.PointerEvent) => {
+      if (!(event.target as Element).closest('.logo-trigger, .tooltip-card')) dismiss();
+    };
+    document.addEventListener("pointerdown", outside);
+    return () => {
+      keepTooltip();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", dismiss);
+      window.removeEventListener("keydown", escape);
+      document.removeEventListener("pointerdown", outside);
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting));
@@ -46,16 +84,24 @@ export default function LogoCarousel() {
 
   function startDrag(event: PointerEvent<HTMLDivElement>) {
     if (!event.isPrimary || event.button !== 0) return;
+    pointerStart.current = event.clientX;
+    suppressClick.current = false;
     const motion = getMotion();
     if (!motion) return;
     drag.current = { ...motion, pointerId: event.pointerId, startX: event.clientX, startTime: Number(motion.animation.currentTime ?? 0) };
-    event.currentTarget.setPointerCapture(event.pointerId);
+    // Capture on the actual trigger so a tap still clicks it; pointer events bubble to the viewport.
+    (event.target as Element).setPointerCapture(event.pointerId);
     setDragging(true);
   }
 
   function moveDrag(event: PointerEvent<HTMLDivElement>) {
     const current = drag.current;
     if (!current || current.pointerId !== event.pointerId) return;
+    if (Math.abs(event.clientX - pointerStart.current) > 5) {
+      suppressClick.current = true;
+      keepTooltip();
+      setTooltip(null);
+    }
     const time = current.startTime - (event.clientX - current.startX) * current.duration / current.distance;
     current.animation.currentTime = ((time % current.duration) + current.duration) % current.duration;
   }
@@ -92,11 +138,27 @@ export default function LogoCarousel() {
         onLostPointerCapture={endDrag}
         onKeyDown={browseWithKeyboard}
       >
-        <div ref={track} className="logo-track" data-running={inView && pageVisible && !paused && !dragging}>
+        <div ref={track} className="logo-track" data-running={inView && pageVisible && !paused && !dragging && !tooltip}>
           {[false, true].map((duplicate) => (
             <ul className="logo-group" key={String(duplicate)} aria-label={duplicate ? undefined : "Logos"} aria-hidden={duplicate ? true : undefined}>
-              {logos.map((logo) => (
+              {logos.map((logo, index) => (
                 <li className="logo-item" key={logo.file}>
+                  <button type="button" className="logo-trigger" tabIndex={duplicate ? -1 : 0}
+                    aria-label={`${logo.name}: collaboration details`} aria-describedby={tooltip?.index === index ? tooltipId : undefined}
+                    onMouseEnter={(event) => {
+                      if (document.activeElement?.matches('.logo-trigger:focus-visible') && document.activeElement !== event.currentTarget) return;
+                      showTooltip(index, event.currentTarget);
+                    }} onMouseLeave={() => { if (!document.activeElement?.matches('.logo-trigger:focus-visible')) closeTooltip(); }}
+                    onFocus={(event) => {
+                      const motion = getMotion();
+                      if (motion && !duplicate && event.currentTarget.matches(':focus-visible')) {
+                        motion.animation.currentTime = index / logos.length * motion.duration;
+                        const viewport = event.currentTarget.closest('.logo-viewport');
+                        if (viewport) viewport.scrollLeft = 0;
+                      }
+                      showTooltip(index, event.currentTarget);
+                    }} onBlur={closeTooltip}
+                    onClick={(event) => { if (!suppressClick.current) showTooltip(index, event.currentTarget); }}>
                   <Image
                     src={`/logos/${logo.file}.png`}
                     alt={duplicate ? "" : logo.name}
@@ -107,12 +169,15 @@ export default function LogoCarousel() {
                     loading="lazy"
                     draggable={false}
                   />
+                  </button>
                 </li>
               ))}
             </ul>
           ))}
         </div>
       </div>
+      {tooltip ? <TooltipCard id={tooltipId} title={logos[tooltip.index].name} context={logos[tooltip.index].context}
+        description={logos[tooltip.index].description} anchor={tooltip.anchor} onEnter={keepTooltip} onLeave={closeTooltip} /> : null}
       <div className="logo-carousel-actions">
         <Link className="text-link" href="/projects">Explore projects <ArrowUpRight size={17} aria-hidden="true" /></Link>
         <button className="logo-motion-control" type="button" onClick={() => setPaused((value) => !value)} aria-label={paused ? "Resume logo animation" : "Pause logo animation"}>
@@ -121,14 +186,7 @@ export default function LogoCarousel() {
         </button>
       </div>
       <div className="logo-context">
-        <p>Different ways of collaborating: direct projects, work through third parties, and demos.</p>
-        <details>
-          <summary>About these projects <ChevronDown size={14} aria-hidden="true" /></summary>
-          <div className="logo-context-copy">
-            <p>These logos represent different professional contexts, including projects delivered directly, work carried out through third parties, and demonstration proposals.</p>
-            <p>For Auting, I developed a demo that received positive feedback, but it did not lead to a subsequent engagement.</p>
-          </div>
-        </details>
+        <p>Hover or tap a logo to learn about my involvement.</p>
       </div>
     </section>
   );

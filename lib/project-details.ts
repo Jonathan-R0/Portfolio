@@ -1,0 +1,9 @@
+// Existing portfolio descriptions; setup details verified against the linked public READMEs.
+export const projectDetails: Record<string, { focus: string; notes: string[] }> = {
+  "Numi": { focus: "Workplace recognition", notes: ["A platform for workplace recognition and rewards through gamification.", "The documented stack combines NestJS and PostgreSQL with Docker, Jest and Cypress."] },
+  "Goodreads Backend": { focus: "Reading-platform API", notes: ["Authentication and book management alongside news, notifications, questions, quotes, readings and users.", "Built with NestJS, Drizzle and PostgreSQL; the project lists Swagger for API documentation."] },
+  "Wolfenstein 3D": { focus: "Multiplayer game · FIUBA", notes: ["A team project for Taller de Programación I at FIUBA, with separate server and client executables and a map editor.", "The repository documents GNU/Linux setup, SDL 2.0 and Qt5 dependencies, and scripts for installation and map management."] },
+  "Machine Learning Competiton": { focus: "Earthquake damage prediction", notes: ["Predicting building damage after an earthquake using Python and the scientific computing ecosystem.", "The project lists Pandas, NumPy, Scikit-learn and Jupyter; the repository identifies this as a team project."] },
+  "MS Teams Notifier": { focus: "Desktop-to-phone notifications", notes: ["A Python utility for forwarding desktop notifications when Microsoft Teams cannot be used on the phone.", "The README describes Pushbullet setup, Windows notification integration and an extensible notification-provider interface."] },
+  "User CRUD": { focus: "User-management API", notes: ["User creation, following, authentication, persistence and management using Spring and Hibernate.", "The README documents a shared Docker network, Docker Compose startup and a Flask-based mock frontend."] },
+};
