@@ -101,6 +101,11 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
 .header-inner nav a:hover svg, .header-inner nav a[aria-current="page"] svg { opacity: 1; }
 .resume-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; color: var(--ink); font-size: 0.84rem; border-bottom: 1px solid var(--ink); }
 .resume-link:hover { color: var(--accent-color); border-color: var(--accent-color); }
+.header-actions { display: flex; flex-direction: column; gap: 20px; }
+.language-switcher { display: flex; align-self: flex-start; gap: 4px; }
+.language-switcher button { min-width: 44px; min-height: 44px; padding: 4px 8px; border: 1px solid transparent; background: transparent; color: var(--quiet); font-size: 0.75rem; cursor: pointer; }
+.language-switcher button:hover { color: var(--accent-color); }
+.language-switcher button[aria-pressed="true"] { color: var(--accent-color); border-color: var(--line); background: var(--paper); font-weight: 600; }
 .rail-note { margin-top: auto; padding-top: 32px; display: flex; flex-direction: column; gap: 4px; color: var(--quiet); font-size: 0.66rem; line-height: 1.6; }
 .rail-note span:first-child { color: var(--ink); font-weight: 500; margin-bottom: 4px; }
 
@@ -262,7 +267,9 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
   .rail-note { display: none; }
   .hero h1 { font-size: 6rem; }
   .hero-thesis { gap: 32px; }
-  .hero-register { flex-wrap: nowrap; }
+  .hero-register { flex-wrap: wrap; }
+  .header-actions { grid-column: 2; grid-row: 1; flex-direction: row; align-items: center; gap: 16px; }
+  .header-actions .resume-magnetic { width: auto; }
 }
 @media (max-width: 600px) {
   .page-width, .header-inner.page-width { width: calc(100% - 40px); }
@@ -271,6 +278,10 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
   .header-inner nav a { font-size: 0.76rem; }
   .header-inner nav a svg { display: none; }
   .resume-link { font-size: 0.76rem; min-width: 88px; }
+  .header-actions { gap: 8px; }
+  .header-actions .resume-link { min-width: 0; gap: 6px; }
+  .wordmark-name { display: none; }
+  .header-inner nav { gap: 12px; }
   .hero { padding-top: 32px; }
   .hero-title-block { position: relative; display: block; padding-bottom: 24px; }
   .hero h1 { font-size: clamp(3.7rem, 15.7vw, 5.8rem); line-height: 0.98; }
@@ -278,6 +289,8 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
   .hero-person p { margin-top: 0; text-align: left; max-width: none; font-size: 0.74rem; }
   .hero-thesis { grid-template-columns: 1fr; align-items: start; gap: 20px; padding-block: 24px; }
   .hero-thesis > p { font-size: 2.35rem; }
+  .pointer-highlight { white-space: normal; }
+  .skill-project-link { white-space: normal; text-align: right; }
   .hero-thesis > p br { display: none; }
   .hero-intro > p { font-size: 0.9rem; }
   .hero-register { display: grid; grid-template-columns: 1fr; gap: 4px; font-size: 0.7rem; }

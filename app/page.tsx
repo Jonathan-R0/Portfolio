@@ -1,4 +1,7 @@
+"use client";
+
 import Hero from "@/components/Hero";
+import { localizeHref, useI18n } from "@/lib/i18n";
 import LogoCarousel from "@/components/LogoCarousel";
 import Skills from "@/components/Skills";
 import Teaching from "@/components/Teaching";
@@ -6,6 +9,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 export default function Home() {
+  const { locale, messages: { home } } = useI18n();
   return (
     <main id="main-content" tabIndex={-1}>
       <Hero />
@@ -13,10 +17,10 @@ export default function Home() {
       <LogoCarousel />
       <Teaching />
       <section className="about-strip page-width" aria-labelledby="about-preview-title">
-        <h2 id="about-preview-title">Beyond the<br />implementation.</h2>
+        <h2 id="about-preview-title">{home.title}<br />{home.titleEnd}</h2>
         <div>
-          <p>Computer Engineering at FIUBA. A love for computing, abstract problems, and Linux.</p>
-          <Link href="/aboutme" className="text-link">About me <ArrowUpRight size={19} aria-hidden="true" /></Link>
+          <p>{home.intro}</p>
+          <Link href={localizeHref("/aboutme", locale)} className="text-link">{home.about} <ArrowUpRight size={19} aria-hidden="true" /></Link>
         </div>
       </section>
     </main>

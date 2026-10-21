@@ -1,47 +1,22 @@
+"use client";
+
 import { ArrowUpRight } from "lucide-react";
+import { localizeHref, useI18n } from "@/lib/i18n";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 
-const groups = [
-  {
-    title: "Agentic Development",
-    description: "Agent-assisted development, guided by specifications, reusable skills, and deliberate context.",
-    items: ["SDD", "OpenCode", "Skills", "Context Engineering"],
-    link: "https://github.com/Jonathan-R0",
-    linkLabel: "Explore my GitHub",
-  },
-  {
-    title: "Languages & frameworks",
-    description: "The building blocks I use for backend development and programming.",
-    items: ["TypeScript", "Python", "Java Spring", "Kotlin"],
-    link: "/projects#numi",
-    linkLabel: "Backend projects",
-  },
-  {
-    title: "Data & infrastructure",
-    description: "Working with data, containers, networks, and the operating system.",
-    items: ["SQL", "Docker", "Networking", "Linux"],
-    link: "/projects#goodreads-backend",
-    linkLabel: "Data in practice",
-  },
-  {
-    title: "Engineering fundamentals",
-    description: "Solving problems, verifying behavior, and keeping changes organized.",
-    items: ["Algorithms", "Testing", "Git"],
-    link: "/projects#wolfenstein-3d",
-    linkLabel: "Engineering projects",
-  },
-];
+const links = ["https://github.com/Jonathan-R0", "/projects#numi", "/projects#goodreads-backend", "/projects#wolfenstein-3d"];
 
 export default function Skills() {
+  const { locale, messages: { skills } } = useI18n();
   return (
     <section id="skills" className="toolbox page-width" aria-labelledby="toolbox-title">
       <div className="section-heading">
-        <h2 id="toolbox-title">The working toolkit</h2>
-        <p>Backend development, systems, and problem solving. Here’s what I bring to the work.</p>
+        <h2 id="toolbox-title">{skills.title}</h2>
+        <p>{skills.intro}</p>
       </div>
-      <HoverEffect items={groups.map((group) => ({
+      <HoverEffect items={skills.groups.map((group, index) => ({
         title: group.title,
-        link: group.link,
+        link: localizeHref(links[index], locale),
         content: (
           <>
             <div className="skill-category"><h3>{group.title}</h3><p className="skill-description">{group.description}</p></div>

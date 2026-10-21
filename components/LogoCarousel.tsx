@@ -5,18 +5,20 @@ import Link from "next/link";
 import { useEffect, useId, useRef, useState, type PointerEvent, type KeyboardEvent } from "react";
 import { ArrowUpRight, Pause, Play } from "lucide-react";
 import { TooltipCard } from "@/components/ui/tooltip-card";
+import { localizeHref, useI18n } from "@/lib/i18n";
 
 const logos = [
-  { name: "Creative Coefficient", file: "multicolor-emblem", width: 200, height: 192, compact: true, context: "Direct work · Consultancy", description: "I worked directly at Creative Coefficient, the consultancy through which I also contributed to other organizations’ projects." },
-  { name: "NEC", file: "nec", width: 600, height: 160, context: "Through Creative Coefficient", description: "I contributed to projects for NEC through Creative Coefficient, rather than through a direct engagement with NEC." },
-  { name: "Grunlot", file: "green-arrow", width: 84, height: 111, compact: true, context: "Through Creative Coefficient", description: "I contributed to Grunlot through Creative Coefficient, the consultancy where I worked, rather than through a direct engagement." },
-  { name: "Neighborhood Pal", file: "neighborhood-pal", width: 445, height: 240, context: "Through Creative Coefficient", description: "I contributed to Neighborhood Pal through Creative Coefficient, rather than through a direct engagement." },
-  { name: "Nexup", file: "nexup", width: 600, height: 189, context: "Current role · Backend development", description: "I currently work at Nexup, developing backend systems for medical software." },
-  { name: "FIUBA · Universidad de Buenos Aires", file: "fiuba", width: 600, height: 170, context: "Education · Academic projects", description: "I studied Computer Engineering and completed academic projects at FIUBA. I also teach Software Engineering I as a teaching assistant." },
-  { name: "Auting", file: "auting", width: 600, height: 130, context: "Demo proposal · No subsequent engagement", description: "I developed a demo that received positive feedback. It did not lead to a subsequent engagement with Auting." },
+  { name: "Creative Coefficient", file: "multicolor-emblem", width: 200, height: 192, compact: true },
+  { name: "NEC", file: "nec", width: 600, height: 160 },
+  { name: "Grunlot", file: "green-arrow", width: 84, height: 111, compact: true },
+  { name: "Neighborhood Pal", file: "neighborhood-pal", width: 445, height: 240 },
+  { name: "Nexup", file: "nexup", width: 600, height: 189 },
+  { name: "FIUBA · Universidad de Buenos Aires", file: "fiuba", width: 600, height: 170 },
+  { name: "Auting", file: "auting", width: 600, height: 130 },
 ];
 
 export default function LogoCarousel() {
+  const { locale, messages: { logos: copy } } = useI18n();
   const section = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const drag = useRef<{ pointerId: number; startX: number; startTime: number; animation: Animation; duration: number; distance: number } | null>(null);
@@ -124,12 +126,12 @@ export default function LogoCarousel() {
   }
 
   return (
-    <section ref={section} className="logo-carousel page-width" aria-label="Logo gallery">
+    <section ref={section} className="logo-carousel page-width" aria-label={copy.gallery}>
       <div
         className="logo-viewport"
         data-dragging={dragging}
         role="group"
-        aria-label="Browse logos: drag horizontally or use the left and right arrow keys"
+        aria-label={copy.browse}
         tabIndex={0}
         onPointerDown={startDrag}
         onPointerMove={moveDrag}
@@ -140,11 +142,11 @@ export default function LogoCarousel() {
       >
         <div ref={track} className="logo-track" data-running={inView && pageVisible && !paused && !dragging && !tooltip}>
           {[false, true].map((duplicate) => (
-            <ul className="logo-group" key={String(duplicate)} aria-label={duplicate ? undefined : "Logos"} aria-hidden={duplicate ? true : undefined}>
+            <ul className="logo-group" key={String(duplicate)} aria-label={duplicate ? undefined : copy.list} aria-hidden={duplicate ? true : undefined}>
               {logos.map((logo, index) => (
                 <li className="logo-item" key={logo.file}>
                   <button type="button" className="logo-trigger" tabIndex={duplicate ? -1 : 0}
-                    aria-label={`${logo.name}: collaboration details`} aria-describedby={tooltip?.index === index ? tooltipId : undefined}
+                    aria-label={copy.details.replace("{name}", logo.name)} aria-describedby={tooltip?.index === index ? tooltipId : undefined}
                     onMouseEnter={(event) => {
                       if (document.activeElement?.matches('.logo-trigger:focus-visible') && document.activeElement !== event.currentTarget) return;
                       showTooltip(index, event.currentTarget);
@@ -176,17 +178,17 @@ export default function LogoCarousel() {
           ))}
         </div>
       </div>
-      {tooltip ? <TooltipCard id={tooltipId} title={logos[tooltip.index].name} context={logos[tooltip.index].context}
-        description={logos[tooltip.index].description} anchor={tooltip.anchor} onEnter={keepTooltip} onLeave={closeTooltip} /> : null}
+      {tooltip ? <TooltipCard id={tooltipId} title={logos[tooltip.index].name} context={copy.entries[tooltip.index].context}
+        description={copy.entries[tooltip.index].description} anchor={tooltip.anchor} onEnter={keepTooltip} onLeave={closeTooltip} /> : null}
       <div className="logo-carousel-actions">
-        <Link className="text-link" href="/projects">Explore projects <ArrowUpRight size={17} aria-hidden="true" /></Link>
-        <button className="logo-motion-control" type="button" onClick={() => setPaused((value) => !value)} aria-label={paused ? "Resume logo animation" : "Pause logo animation"}>
+        <Link className="text-link" href={localizeHref("/projects", locale)}>{copy.explore} <ArrowUpRight size={17} aria-hidden="true" /></Link>
+        <button className="logo-motion-control" type="button" onClick={() => setPaused((value) => !value)} aria-label={paused ? copy.resume : copy.pause}>
           {paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
-          <span>{paused ? "Play" : "Pause"}</span>
+          <span>{paused ? copy.playLabel : copy.pauseLabel}</span>
         </button>
       </div>
       <div className="logo-context">
-        <p>Hover or tap a logo to learn about my involvement.</p>
+        <p>{copy.hint}</p>
       </div>
     </section>
   );

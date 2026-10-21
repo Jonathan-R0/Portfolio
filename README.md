@@ -4,7 +4,17 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 The portfolio uses a light neutral layout with restrained blue accents and balanced emphasis on skills and projects. The implemented palette, typography, responsive rules and component patterns are documented in [DESIGN.md](DESIGN.md). [PRODUCT.md](PRODUCT.md) records the audience and content constraints.
 
-Projects are maintained in `public/projects.json` and rendered at build time. Skills live in `components/Skills.tsx`; the contact email is centralized in `lib/contact.ts`. Teaching and education details verified from the CV live in `lib/profile.ts`. Shared navigation and contact details live in `components/Header.tsx` and `components/Footer.tsx`; the visual system lives in `app/globals.css`.
+Project IDs, technologies and destinations are maintained in `public/projects.json`. All translated content (including skills, teaching, education, tooltips, project descriptions and notes) lives in `lib/locales/en.json` and `lib/locales/es.json`. The contact email is centralized in `lib/contact.ts`; the visual system lives in `app/globals.css`.
+
+## Languages (English / Spanish)
+
+- Use the **ES / EN** selector in the header, or share any route with `?lang=es` / `?lang=en` (for example, `/projects?lang=es#numi`). Switching preserves other query parameters, anchors and scroll position.
+- Selection priority: valid `lang` query parameter → saved preference (`portfolio.locale.v1` in localStorage) → browser language → English. Unsupported query values are ignored. Storage is optional; the selector and URL still work when it is blocked.
+- Internal page links include the selected language. Browser back/forward restores language changes.
+- `lib/i18n.tsx` provides typed dictionaries through `useI18n()`, updates the document language, title, description and Open Graph metadata, and exposes `localizeHref()` for internal links. There is no additional dependency or server requirement.
+- Edit both JSON files together, preserving matching keys and array order. Project translation entries follow the order of `public/projects.json`; logo entries follow `components/LogoCarousel.tsx`. Proper names and technology brands are intentionally unchanged.
+- Static HTML is prerendered in English; Spanish and query-based preferences are applied after hydration. Social crawlers without JavaScript see the default English metadata. Fully localized SEO/social previews would require separate statically generated language routes rather than only query parameters.
+- Run `node --test tests/i18n.test.mjs` to validate dictionary parity and content coverage, plus `npm run lint` and `npm run build`.
 
 The [current teaching/Aceternity review](.impeccable/review/teaching-aceternity-review.md) includes desktop/mobile screenshots and browser checks. [Source attribution and profile verification](.impeccable/review/aceternity-sources.md) document the Card Hover Effect and Timeline adaptations. Run `npm run build` for the static export in `out/`, and `npm run lint` to check the source.
 
