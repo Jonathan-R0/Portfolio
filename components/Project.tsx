@@ -1,79 +1,36 @@
-/* eslint-disable @next/next/no-img-element */
-import Link from "next/link";
-import { Github } from "lucide-react";
+"use client";
+
+import { ArrowUpRight } from "lucide-react";
+import { ExpandableCard } from "@/components/ui/expandable-card";
+import { ProjectHoverRow } from "@/components/ui/project-hover-row";
+import { useI18n } from "@/lib/i18n";
 
 interface ProjectProps {
+  id: string;
   title: string;
   description: string;
-  image: string;
+  focus: string;
+  notes: string[];
   technologies: string[];
   github?: string;
-  index: number;
-  important: boolean;
+  important?: boolean;
   alternate_link?: string;
 }
 
-export default function Project({
-  title,
-  description,
-  image,
-  technologies,
-  github,
-  index,
-  alternate_link,
-}: // important,
-ProjectProps) {
+export default function Project({ id, title, description, focus, notes, technologies, github, alternate_link }: ProjectProps) {
+  const { messages: { projects } } = useI18n();
+  const href = github || alternate_link;
+  const label = github ? projects.source : projects.visit;
+  const slug = id;
   return (
-    <div
-      key={index}
-      className="glass-panel group flex h-full flex-col overflow-hidden rounded-3xl transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300/30 hover:bg-slate-800/60"
-    >
-      <div className="relative overflow-hidden">
-        {
-          /*!important*/ false ? (
-            <img
-              src={`${image}?height=200&width=300`}
-              alt={title}
-              width={300}
-              height={200}
-              className="w-full  transition-all duration-300 filter grayscale group-hover:filter-none"
-            />
-          ) : null
-        }
+    <ProjectHoverRow id={slug} titleId={`${slug}-title`}>
+      <h2 className="project-title" id={`${slug}-title`}>{title}</h2>
+      <div className="project-copy">
+        <p>{description}</p>
+        <ul className="technology-list" aria-label={projects.technologies.replace("{title}", title)}>{Array.from(new Set(technologies)).map((tech) => <li key={tech}>{tech}</li>)}</ul>
+        {href ? <a href={href} target="_blank" rel="noopener noreferrer" className="text-link">{label}<ArrowUpRight size={18} aria-hidden="true" /><span className="sr-only">{projects.context.replace("{title}", title)}</span></a> : null}
+        <ExpandableCard title={title} focus={focus} notes={notes} />
       </div>
-      <div className="flex flex-grow flex-col p-5">
-        <h3 className="mb-3 text-xl font-semibold text-white">{title}</h3>
-        <p className="mb-5 flex-grow leading-7 text-slate-400">{description}</p>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {technologies.map((tech, i) => (
-            <span key={i} className="pill">
-              {tech}
-            </span>
-          ))}
-        </div>
-        {github ? (
-          <div className="flex flex-col mt-auto">
-            <Link
-              href={github}
-              target="_blank"
-              className="accent-link flex items-center gap-2 font-medium"
-            >
-              <Github size={20} />
-              <span>View on GitHub</span>
-            </Link>
-          </div>
-        ) : (
-          <Link
-            href={alternate_link || "#"}
-            target="_blank"
-            className="accent-link flex items-center gap-2 font-medium"
-          >
-            <span>
-              Check out whats coming soon! 👀
-            </span>
-          </Link>
-        )}
-      </div>
-    </div>
+    </ProjectHoverRow>
   );
 }

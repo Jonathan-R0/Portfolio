@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-19T00:00:00Z",
+  "title": "Design System: Jonathan Rosenblatt Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Folio Paper" },
+      "ink": { "role": "neutral", "displayName": "Graphite" },
+      "quiet": { "role": "neutral", "displayName": "Quiet Graphite" },
+      "line": { "role": "neutral", "displayName": "Fine Divider" },
+      "accent-color": { "role": "primary", "displayName": "Restrained Blue" },
+      "accent-soft": { "role": "primary", "displayName": "Soft Blue" },
+      "surface": { "role": "neutral", "displayName": "Cool Gray Margin" },
+      "focus": { "role": "primary", "displayName": "Focus Blue" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Hero Display", "purpose": "Uppercase two-line Barlow Condensed name; responsive overrides at 1150px, 900px and 600px are recorded in DESIGN.md." },
+      "headline": { "displayName": "Section Headline", "purpose": "Uppercase balanced Barlow Condensed section titles; 2.25rem at max-width 600px." },
+      "title": { "displayName": "Project Title", "purpose": "Authored-case Barlow Condensed; selected work 1.8rem, full ledger 2.5rem; mobile 1.65rem and 2.25rem respectively." },
+      "body": { "displayName": "Body", "purpose": "Local Geist inherited baseline; visible prose uses component-specific sizes and reading widths." },
+      "label": { "displayName": "Technology Metadata", "purpose": "Small wrapping Geist labels with individual bottom rules, not interactive pills." },
+      "skill-list": { "displayName": "Capability List", "purpose": "Prominent wrapping Barlow Condensed skills; mobile 1.9rem." }
+    },
+    "shadows": [{ "name": "tooltip-card", "value": "0 8px 32px #24292c24", "purpose": "Portaled organization context card only; project rows and page surfaces remain flat." }],
+    "motion": [
+      { "name": "arrow-feedback", "value": "transform 180ms ease-out; translate(2px, -2px)", "purpose": "Text-action SVG hover feedback; reduced motion removes transition and transform." },
+      { "name": "anchor-scroll", "value": "scroll-behavior: smooth; scroll-padding-top: 32px", "purpose": "In-page navigation; Skills, project entries and academic journey also have 32px scroll margins. Reduced motion switches to auto." },
+      { "name": "skill-highlight", "value": "layoutId: skill-highlight; opacity: 0 → 1 → 0; duration: 0.2s", "purpose": "Per-instance LayoutGroup and AnimatePresence share a soft-blue background across hover/focused capability rows. No custom layout easing is declared. Reduced motion removes layoutId and sets duration to zero." },
+      { "name": "timeline-progress", "value": "scaleY: scrollYProgress; transform-origin: top; offsets: start 75%, end 55%", "purpose": "Transform-only academic beam; reduced motion sets scaleY to 1. Content is always visible." },
+      { "name": "reduced-motion", "value": "animation: none !important; transition: none !important; text-link hover transform: none", "purpose": "Applies at prefers-reduced-motion: reduce to elements and pseudo-elements; Framer Motion has separate highlight/beam handling." },
+      { "name": "immediate-states", "value": "no transition declared", "purpose": "Navigation arrow visibility and resume color/underline change immediately." },
+      { "name": "logo-carousel", "value": "transform: translateX(-50%); duration: 80s; timing: linear; iteration: infinite", "purpose": "Two matching groups of seven transparent local logos replace the Home project preview. Pauses on hover, explicit Pause/Play, offscreen and document hidden. Reduced motion removes animation, duplicate group and motion control, and wraps all originals in a static list." }
+    ],
+    "breakpoints": [
+      { "name": "wide-rail-min", "value": "1600px" },
+      { "name": "compact-rail-max", "value": "1150px" },
+      { "name": "two-row-header-max", "value": "900px" },
+      { "name": "stacked-content-max", "value": "600px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Resume Link",
+      "kind": "button",
+      "refersTo": "resume-link",
+      "description": "Underlined anchor, not a filled button; the live header links to the existing Google Drive resume.",
+      "html": "<a class=\"ds-resume\" href=\"https://drive.google.com/file/d/1TqiDR9FA-7JP3-DO4ha2yrW4X3IyuRYO/view?usp=sharing\" target=\"_blank\" rel=\"noopener noreferrer\">Resume <svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 7h10v10M7 17 17 7\"/></svg></a>",
+      "css": ".ds-resume{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;color:var(--ink);font-family:var(--font-body),sans-serif;font-size:.84rem;text-decoration:none;border-bottom:1px solid var(--ink)}.ds-resume:hover{color:var(--accent-color);border-color:var(--accent-color)}.ds-resume:focus-visible{outline:2px solid var(--focus);outline-offset:5px}"
+    },
+    {
+      "name": "Text Action",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "Blue project action with a directional SVG, underline feedback and reduced-motion handling.",
+      "html": "<a class=\"ds-action\" href=\"https://github.com/Jonathan-R0/Goodreads-Backend\" target=\"_blank\" rel=\"noopener noreferrer\">View source<svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 7h10v10M7 17 17 7\"/></svg></a>",
+      "css": ".ds-action{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:44px;color:var(--accent-color);font-family:var(--font-body),sans-serif;font-size:.88rem;font-weight:500;text-decoration:none;text-underline-offset:.3em}.ds-action:hover{text-decoration:underline}.ds-action svg{transition:transform 180ms ease-out}.ds-action:hover svg{transform:translate(2px,-2px)}.ds-action:focus-visible{outline:2px solid var(--focus);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-action svg{transition:none}.ds-action:hover svg{transform:none}}"
+    },
+    {
+      "name": "Route Index",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Desktop route rows, current-page blue and revealed arrow. Preview omits fixed positioning; full responsive shell dimensions are in DESIGN.md.",
+      "html": "<nav class=\"ds-index\" aria-label=\"Main navigation\"><a href=\"/\" aria-current=\"page\"><span>Home</span><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M5 12h14m-7-7 7 7-7 7\"/></svg></a><a href=\"/#skills\"><span>Skills</span><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M5 12h14m-7-7 7 7-7 7\"/></svg></a><a href=\"/projects\">Projects</a><a href=\"/aboutme\">About</a></nav>",
+      "css": ".ds-index{display:flex;flex-direction:column;background:var(--surface);padding:32px 28px;font-family:var(--font-body),sans-serif}.ds-index a{display:flex;justify-content:space-between;align-items:center;min-height:48px;border-bottom:1px solid var(--line);font-size:.84rem;color:var(--quiet);text-decoration:none}.ds-index svg{opacity:0}.ds-index a:hover,.ds-index a[aria-current=page]{color:var(--accent-color)}.ds-index a:hover svg,.ds-index a[aria-current=page] svg{opacity:1}.ds-index a:focus-visible{outline:2px solid var(--focus);outline-offset:5px}@media(max-width:900px){.ds-index{flex-direction:row;gap:24px;padding:20px 0}.ds-index a{flex:1;min-height:40px;gap:12px}.ds-index svg{width:13px}}@media(max-width:600px){.ds-index{gap:20px}.ds-index a{font-size:.76rem}.ds-index svg{display:none}}"
+    },
+    {
+      "name": "Capability Row",
+      "kind": "custom",
+      "refersTo": "skill-row",
+      "description": "Open linked ledger row. Static hover/focus preview; the application shares an animated background between rows using Framer Motion.",
+      "html": "<a class=\"ds-skill\" href=\"/projects#goodreads-backend\"><span class=\"ds-category\"><strong>Data &amp; infrastructure</strong><span class=\"ds-description\">Working with data, containers, networks, and the operating system.</span></span><span class=\"ds-skills\"><span>SQL</span><span>Docker</span><span>Networking</span><span>Linux</span></span><span class=\"ds-cue\">Data in practice<svg width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 7h10v10M7 17 17 7\"/></svg></span></a>",
+      "css": ".ds-skill{display:grid;grid-template-columns:1fr 1.25fr auto;align-items:center;gap:28px;padding:26px 12px 26px 0;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-family:var(--font-body),sans-serif}.ds-skill:hover,.ds-skill:focus-visible{background:var(--accent-soft)}.ds-skill:focus-visible{outline:2px solid var(--focus);outline-offset:5px}.ds-category strong{font-size:.8rem;font-weight:550;line-height:1.4}.ds-description{display:block;max-width:30ch;margin-top:8px;font-size:.75rem;line-height:1.65;color:var(--quiet)}.ds-skills{display:flex;flex-wrap:wrap;gap:0 16px;font-family:var(--font-display),sans-serif;font-size:1.75rem;font-weight:500;line-height:1.3}.ds-cue{display:flex;flex-direction:column-reverse;align-items:flex-end;gap:10px;font-size:.7rem;white-space:nowrap;color:var(--accent-color)}.ds-skill:hover .ds-cue,.ds-skill:focus-visible .ds-cue{text-decoration:underline}@media(max-width:1150px){.ds-skill{grid-template-columns:1fr 1.25fr;gap:16px 28px}.ds-category{grid-row:span 2}.ds-cue{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between}}@media(max-width:600px){.ds-skill{grid-template-columns:1fr;gap:16px;padding:24px 8px 24px 0}.ds-category{grid-row:auto}.ds-category strong{font-size:.78rem}.ds-description{font-size:.76rem;max-width:40ch;margin-top:6px}.ds-skills{font-size:1.9rem;gap:2px 16px}.ds-cue{grid-column:auto;font-size:.74rem;min-height:28px}}"
+    },
+    {
+      "name": "Technology Metadata",
+      "kind": "custom",
+      "refersTo": "technology-list",
+      "description": "Deduplicated wrapping labels with fine bottom rules; labels have no interactive state.",
+      "html": "<ul class=\"ds-tech\" aria-label=\"Goodreads Backend technologies\"><li>Typescript</li><li>NestJS</li><li>Drizzle</li><li>PostgreSQL</li><li>Docker</li><li>Swagger</li></ul>",
+      "css": ".ds-tech{display:flex;flex-wrap:wrap;gap:4px 12px;color:var(--quiet);font-family:var(--font-body),sans-serif;font-size:.68rem;line-height:1.6;list-style:none;margin:18px 0 12px;padding:0}.ds-tech li{border-bottom:1px solid var(--line);padding-bottom:2px}"
+    },
+    {
+      "name": "Academic Timeline Entry",
+      "kind": "custom",
+      "description": "Semantic dated record with square node and thin blue track. Static preview does not simulate sticky dates or scroll-linked progress.",
+      "html": "<ol class=\"ds-timeline\"><li class=\"ds-entry\"><div class=\"ds-date\"><span class=\"ds-node\" aria-hidden=\"true\"></span><p>August 2025 — Present</p></div><div class=\"ds-content\"><h3>Teaching assistant</h3><p class=\"ds-institution\">Software Engineering I · FIUBA</p><p>I guide students through API design, testing, project management, and software development.</p><p>14 students per semester, across two teams of 7.</p></div></li></ol>",
+      "css": ".ds-timeline{position:relative;list-style:none;margin:0;padding:16px 0;border-top:1px solid var(--ink);font-family:var(--font-body),sans-serif}.ds-timeline:before{content:'';position:absolute;left:5px;top:38px;bottom:42px;width:1px;background:var(--accent-color)}.ds-entry{position:relative;display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;padding:20px 0 40px}.ds-date{position:relative;padding-left:28px}.ds-date p{margin:0;color:var(--quiet);font-size:.76rem;line-height:1.7}.ds-node{position:absolute;top:7px;left:1px;width:9px;height:9px;background:var(--accent-color)}.ds-content h3{margin:0 0 12px;color:var(--ink);font-family:var(--font-display),sans-serif;font-size:2rem;font-weight:600;line-height:1.15}.ds-content p{margin:0 0 16px;max-width:60ch;color:var(--quiet);font-size:.9rem;line-height:1.65}.ds-content .ds-institution{color:var(--accent-color);font-size:.77rem}@media(max-width:600px){.ds-entry{grid-template-columns:1fr;gap:20px;padding-left:28px}.ds-date{position:static;padding-left:0}.ds-node{top:27px}.ds-content h3{font-size:1.9rem}.ds-content p{font-size:.86rem}.ds-content .ds-institution{font-size:.77rem}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Engineering folio",
+    "overview": "An open engineering folio pairs a cool gray marginal index with nearly white reading sheets. Condensed title blocks establish identity; Geist prose and small technical metadata keep the evidence readable. Restrained blue marks destinations, focus and small annotations rather than broad color fields.\n\nThe system is square-cut and flat: ruled capability rows, a silver-logo carousel on Home, a text-only project ledger, text-led biography and an academic timeline. All six project preview images and their data references were removed at the owner's request. Home and About have no visible portrait. Product facts remain in `PRODUCT.md`; route strategy remains in `.impeccable/surface-home.md`.",
+    "keyCharacteristics": [
+      "A fixed desktop marginal index becomes a two-row in-flow header on smaller screens.",
+      "Barlow Condensed titles and capability lists contrast with Geist prose and metadata.",
+      "Open skills rows lead into a silver-logo carousel; Projects presents all six projects in a text-only ledger.",
+      "Blue interaction annotations move without hiding or moving the evidence itself."
+    ],
+    "rules": [
+      { "name": "The Restrained Accent Rule", "body": "Keep broad regions paper or neutral gray; reserve blue for actions, focus and small annotations.", "section": "colors" },
+      { "name": "The Two Voices Rule", "body": "Use Barlow Condensed for identity, headings and prominent capability lists; use Geist for prose, navigation, actions and technical metadata.", "section": "typography" },
+      { "name": "The Flat Evidence Rule", "body": "Present project evidence through descriptions, technology lists and direct source links, using fine rules and open space.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do preserve paper and gray fields with restrained blue actions and focus.",
+      "Do pair Barlow Condensed identity and capability lists with Geist prose and metadata.",
+      "Do retain text-led project rows, source links and open ruled ledgers.",
+      "Do provide equivalent hover/focus annotation and immediate reduced-motion states."
+    ],
+    "donts": [
+      "Don't restore the outgoing Manrope card system as the current visual authority.",
+      "Don't enlarge one selected project into a dominant featured treatment.",
+      "Don't replace original project evidence with invented artwork or claims.",
+      "Don't promote compatibility variables, development overlays or synthesized palette steps into shipping variants."
+    ]
+  }
+}

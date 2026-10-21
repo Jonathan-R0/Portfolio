@@ -1,0 +1,13 @@
+{
+  "description": "Owner-selected logos, downloaded locally for the home carousel. Their display does not assert employment, endorsement or a commercial relationship.",
+  "displayTreatment": "Owner-requested uniform cool-silver palette, rendered into the PNGs from public/logos.backup originals. Shared RGB midtone (134,138,143), restrained luminance detail (+/-18) and top-to-bottom light (+/-5). Original dimensions and every alpha value are preserved exactly. Source processing notes below describe the prior background-removal step. Backup assets are unchanged.",
+  "assets": [
+    { "file": "multicolor-emblem.png", "source": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFfJrnAo-bubzSIPQm4-V_b0Hmgi0rXS43OwiLVYh7LsfkWp1cDOSPYbQo&s=10", "processing": "White matte removed with edge unmixing; transparent PNG, trimmed." },
+    { "file": "nec.png", "source": "https://cdn.freebiesupply.com/logos/large/2x/nec-5-logo-png-transparent.png", "processing": "Existing transparency preserved, trimmed and resized." },
+    { "file": "green-arrow.png", "source": "https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/77/05/aa/7705aa20-5afd-534a-9cc8-4d89ad7a9346/AppIcon-1x_U007emarketing-0-7-0-85-220.png/200x200bb.png", "processing": "Original white symbol extracted from green app background; symbol rendered in the original brand green for visibility on the light page." },
+    { "file": "neighborhood-pal.png", "source": "https://creativecoefficient.net/wp-content/uploads/2024/10/neighborhood-logo-white.svg", "processing": "Original SVG alpha preserved and rasterized; white foreground changed to portfolio graphite for visibility on the light page." },
+    { "file": "nexup.png", "source": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKLpdf2APRfitqkMEZiOO0fpFzjDxbGYAMIaDePLu6xA&s=10", "processing": "White matte removed with edge unmixing; trimmed and resized." },
+    { "file": "fiuba.png", "source": "https://www.fi.uba.ar/images/logo-fiuba.png", "processing": "White matte removed with edge unmixing; trimmed and resized." },
+    { "file": "auting.png", "source": "https://auting.com/wp-content/uploads/2024/03/LOGO-AUTING-2024-1024x418.png", "processing": "Existing transparency preserved, trimmed and resized." }
+  ]
+}

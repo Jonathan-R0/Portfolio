@@ -1,49 +1,30 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { localizeHref, useI18n } from "@/lib/i18n";
+import { HoverEffect } from "@/components/ui/card-hover-effect";
 
-const skills = [
-  "🐍 Python",
-  "🔄 TypeScript",
-  "☕ Java Spring",
-  "🤖 .NET",
-  "🐳 Docker",
-  "🌐 Networking",
-  "🗃️ SQL",
-  "🧪 Testing",
-  "🌿 Git",
-  "♾️ Algorithms",
-];
+const links = ["https://github.com/Jonathan-R0", "/projects#numi", "/projects#goodreads-backend", "/projects#wolfenstein-3d"];
 
 export default function Skills() {
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
-
+  const { locale, messages: { skills } } = useI18n();
   return (
-    <section id="skills" className="py-16 md:py-20">
-      <p className="section-kicker">Toolbox</p>
-      <h2 className="section-title mb-10 fade-in">Skills 🛠️</h2>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={skill}
-            className="glass-panel cursor-move rounded-2xl p-4 text-center text-slate-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            drag
-            dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-            onHoverStart={() => setHoveredSkill(skill)}
-            onHoverEnd={() => setHoveredSkill(null)}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
-            <span className={hoveredSkill === skill ? "text-emerald-300" : ""}>
-              {skill}
-            </span>
-          </motion.div>
-        ))}
+    <section id="skills" className="toolbox page-width" aria-labelledby="toolbox-title">
+      <div className="section-heading">
+        <h2 id="toolbox-title">{skills.title}</h2>
+        <p>{skills.intro}</p>
       </div>
+      <HoverEffect items={skills.groups.map((group, index) => ({
+        title: group.title,
+        link: localizeHref(links[index], locale),
+        content: (
+          <>
+            <div className="skill-category"><h3>{group.title}</h3><p className="skill-description">{group.description}</p></div>
+            <ul className="skill-list">{group.items.map((item) => <li key={item}>{item}</li>)}</ul>
+            <span className="skill-project-link">{group.linkLabel}<ArrowUpRight size={19} aria-hidden="true" /></span>
+          </>
+        ),
+      }))} />
     </section>
   );
 }

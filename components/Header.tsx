@@ -1,74 +1,47 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { MagneticButton } from "@/components/ui/magnetic-button";
+import { localizeHref, useI18n } from "@/lib/i18n";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { stripLocale } from "@/lib/routing";
+
+const links = [
+  { href: "/", label: "home" },
+  { href: "/#skills", label: "skills" },
+  { href: "/projects", label: "projects" },
+  { href: "/aboutme", label: "about" },
+] as const;
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname();
-
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/projects", label: "Projects" },
-    { href: "/blog", label: "Blog" },
-    { href: "/aboutme", label: "About Me" },
-  ];
-
+  const pathname = stripLocale(usePathname());
+  const { locale, messages: { common } } = useI18n();
+  // Aceternity Resizable Navbar adaptation: solid compact mobile index, desktop rail unchanged.
+  const marker = useRef<HTMLSpanElement>(null);
+  const [compact, setCompact] = useState(false);
   useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
-
+    const observer = new IntersectionObserver(([entry]) => setCompact(!entry.isIntersecting));
+    if (marker.current) observer.observe(marker.current);
+    return () => observer.disconnect();
+  }, []);
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 py-3 backdrop-blur-xl">
-      <nav className="container mx-auto max-w-6xl px-5 md:px-8">
-        <div className="flex justify-between items-center">
-          <Link href="/" className="group text-sm font-semibold tracking-[0.24em] text-white fade-in md:text-base">
-            Jonathan<span className="text-emerald-300 transition-colors group-hover:text-emerald-200">-R0</span>.dev
-          </Link>
-          <button
-            className="glass-panel flex h-11 w-11 items-center justify-center rounded-full text-slate-100 md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
-          <ul
-            className={`items-center gap-2 md:flex ${
-              isMenuOpen
-                ? "glass-panel absolute left-4 right-4 top-[calc(100%+0.75rem)] z-50 flex flex-col rounded-3xl p-3 transition-all duration-300 ease-in-out"
-                : "hidden"
-            }`}
-          >
-            {links.map((link, index) => {
-              const isActive = pathname === link.href;
-
-              return (
-                <li key={link.href} className="w-full md:w-auto">
-                  <Link
-                    href={link.href}
-                    className={`block rounded-full px-4 py-2 text-sm transition-all slide-in-right md:inline-flex ${
-                      isActive
-                        ? "bg-emerald-300 text-slate-950 shadow-lg shadow-emerald-950/40"
-                        : "text-slate-300 hover:bg-white/10 hover:text-white"
-                    }`}
-                    style={{ animationDelay: `${(index + 1) * 0.1}s` }}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </nav>
-      {isMenuOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-slate-950/60 transition-opacity duration-300 md:hidden"
-          onClick={() => setIsMenuOpen(false)}
-        ></div>
-      )}
-    </header>
+    <><span ref={marker} className="nav-scroll-marker" aria-hidden="true" /><header className="site-header" data-compact={compact}>
+      <div className="page-width header-inner">
+        <Link prefetch={false} href={localizeHref("/", locale)} className="wordmark" aria-label={common.homeLabel}><span className="monogram">JR<span>.</span></span><span className="wordmark-name">Jonathan<br />Rosenblatt</span></Link>
+        <nav aria-label={common.navigation}>
+          {links.map(({ href, label }) => {
+            const active = href === "/" ? pathname === href : pathname.startsWith(href);
+            return <Link prefetch={false} key={href} href={localizeHref(href, locale)} aria-current={active ? "page" : undefined}><span>{common[label]}</span><ArrowRight size={15} aria-hidden="true" /></Link>;
+          })}
+        </nav>
+        <div className="header-actions"><LanguageSwitcher /><MagneticButton className="resume-magnetic"><a className="resume-link" href="https://drive.google.com/file/d/1TqiDR9FA-7JP3-DO4ha2yrW4X3IyuRYO/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+          {common.resume} <ArrowUpRight size={17} aria-hidden="true" />
+        </a></MagneticButton></div>
+        <div className="rail-note"><span>{common.backend}</span><span>{common.engineer}</span><span>{common.location}</span></div>
+      </div>
+    </header></>
   );
 }
