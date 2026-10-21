@@ -126,7 +126,7 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
 .skill-hover-grid { display: flex; flex-direction: column; border-top: 1px solid var(--ink); }
 .skill-hover-item { display: block; position: relative; border-bottom: 1px solid var(--line); }
 .skill-hover-background { position: absolute; inset: 0 -12px; background: var(--accent-soft); pointer-events: none; }
-.skill-card-content { position: relative; display: grid; grid-template-columns: 1fr 1.25fr auto; align-items: center; gap: 28px; padding: 26px 12px 26px 0; }
+.skill-card-content { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) 9rem; align-items: center; gap: 28px; padding: 26px 12px 26px 0; }
 .skill-category h3 { font-family: var(--font-body), sans-serif; font-size: 0.8rem; font-weight: 550; line-height: 1.4; }
 .skill-description { max-width: 30ch; color: var(--quiet); font-size: 0.75rem; line-height: 1.65; margin-top: 8px; }
 .skill-list { display: flex; flex-wrap: wrap; gap: 0 16px; align-content: center; font-family: var(--font-display), sans-serif; font-size: 1.75rem; font-weight: 500; line-height: 1.3; }
@@ -238,7 +238,7 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
   :root { --rail-width: 180px; }
   .header-inner.page-width { padding-inline: 22px; }
   .page-width { width: calc(100% - 72px); }
-  .skill-card-content { grid-template-columns: 1fr 1.25fr; gap: 16px 28px; }
+  .skill-card-content { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 16px 28px; }
   .skill-project-link { grid-column: 2; flex-direction: row; align-items: center; justify-content: space-between; }
   .skill-category { grid-row: span 2; }
   .hero h1 { font-size: 5.25rem; }

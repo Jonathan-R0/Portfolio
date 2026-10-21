@@ -25,6 +25,8 @@ export function HoverEffect({ items }: { items: HoverItem[] }) {
           <Link
             key={item.title}
             href={item.link}
+            target={item.link.startsWith("https://") ? "_blank" : undefined}
+            rel={item.link.startsWith("https://") ? "noopener noreferrer" : undefined}
             className="skill-hover-item"
             onMouseEnter={() => setActive(index)}
             onMouseLeave={() => setActive(null)}

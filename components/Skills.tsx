@@ -3,9 +3,16 @@ import { HoverEffect } from "@/components/ui/card-hover-effect";
 
 const groups = [
   {
+    title: "Agentic Development",
+    description: "Agent-assisted development, guided by specifications, reusable skills, and deliberate context.",
+    items: ["SDD", "OpenCode", "Skills", "Context Engineering"],
+    link: "https://github.com/Jonathan-R0",
+    linkLabel: "Explore my GitHub",
+  },
+  {
     title: "Languages & frameworks",
     description: "The building blocks I use for backend development and programming.",
-    items: ["TypeScript", "Python", "Java Spring", ".NET"],
+    items: ["TypeScript", "Python", "Java Spring", "Kotlin"],
     link: "/projects#numi",
     linkLabel: "Backend projects",
   },
