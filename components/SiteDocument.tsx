@@ -8,6 +8,7 @@ import en from "@/lib/locales/en.json";
 import es from "@/lib/locales/es.json";
 import { siteUrl } from "@/lib/seo";
 import type { Locale } from "@/lib/routing";
+import { themeInitScript } from "@/lib/theme";
 
 const display = Barlow_Condensed({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-display", display: "swap" });
 const body = localFont({ src: "../app/fonts/GeistVF.woff", variable: "--font-body", display: "swap" });
@@ -52,8 +53,9 @@ export default function SiteDocument({
   locale: Locale;
 }) {
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body className={`${display.variable} ${body.variable} ${mono.variable}`}>
+        <script id="theme-init" dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <I18nProvider locale={locale}>
           <SkipLink />
           <div className="site-shell">

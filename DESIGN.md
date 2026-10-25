@@ -115,6 +115,12 @@ The system is square-cut and flat: ruled capability rows, contained original pro
 
 ## Colors
 
+### Optional dark theme
+
+The navigation includes a square 44px moon/sun toggle beside the language selector, with localized accessible naming and a pressed state. First visits follow the system color preference; explicit choices persist under `portfolio.theme.v1` and apply before content paints, including when switching languages. System changes apply until a preference is saved; other tabs synchronize saved changes. Storage failures do not disable the toggle.
+
+Dark mode preserves the folio layout and restrained blue accents: paper `#171b1e`, ink `#e7ebed`, quiet `#adb8bf`, line `#3a454d`, accent/focus `#8bbcf0`, soft accent `#233344`, surface `#20262b`. Selection, scrollbars, native color scheme and compatibility tokens follow the theme. The original light palette remains unchanged.
+
 ### Primary
 - **Restrained Blue** (`accent-color`): text actions, current/hovered navigation and its arrow, identity periods, skill project cues, completed education and timeline beam, nodes and institution labels.
 - **Soft Blue** (`accent-soft`): shared capability-row hover/focus background.
@@ -192,7 +198,7 @@ Teaching and About preview use (0.9fr / 1.1fr) columns with (64px) gaps. Teachin
 
 Inner pages use (48px / 80px) vertical padding, then (32px / 44px). Intro is (1.1fr / 1fr), (40px) gap, (36px) bottom padding and (40px) bottom margin, with an ink rule. Mobile stacks with (24px) gap and (28px) bottom padding/margin.
 
-The complete Projects collection is a text-only vertical ledger: six title/content entries in (1.1fr / 1fr) columns, (40px) gap, (32px) vertical padding and bottom rules. First entry has no top padding. Gap reduces to (28px) at intermediate widths. Mobile stacks titles above details with (16px) gap and (28px) vertical padding. Titles are semantic h2 headings in authored case, (2.5rem / 1.1), mobile (2.25rem). Descriptions use (0.94rem / 1.7), followed by wrapping metadata and direct project actions. No image column, mat or placeholder remains.
+The complete Projects collection is a text-only vertical ledger: six title/content entries in (1.1fr / 1fr) columns, (40px) gap, (32px) vertical padding and bottom rules. Every entry, including Numi, retains equal top padding so its hover background has consistent breathing room. Gap reduces to (28px) at intermediate widths. Mobile stacks titles above details with (16px) gap and (28px) vertical padding. Titles are semantic h2 headings in authored case, (2.5rem / 1.1), mobile (2.25rem). Descriptions use (0.94rem / 1.7), followed by wrapping metadata and direct project actions. No image column, mat or placeholder remains.
 
 About is text-led: a perspective heading and location on the left, biography and GitHub action on the right in (1.1fr / 1fr) columns with (40px) gap, then (36px) at intermediate widths. Mobile stacks with (32px) gap. A full-width ruled education summary follows, using the same columns with (36px) top margin and (24px) top padding; mobile stacks with (28px) top margin. The About wrapper has no bottom padding. Academic journey follows, then shared Skills; journey padding is (64px / 12px), mobile (40px / 8px), and following Skills top padding is (28px).
 
