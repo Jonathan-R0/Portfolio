@@ -3,6 +3,7 @@ import { Barlow_Condensed } from "next/font/google";
 import localFont from "next/font/local";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import { I18nProvider, SkipLink } from "@/lib/i18n";
 import en from "@/lib/locales/en.json";
 import es from "@/lib/locales/es.json";
@@ -63,6 +64,7 @@ export default function SiteDocument({
             {children}
             <Footer />
           </div>
+          <ScrollToTop />
         </I18nProvider>
         <script
           id="schema-structured-data"
