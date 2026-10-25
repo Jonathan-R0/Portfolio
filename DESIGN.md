@@ -117,7 +117,7 @@ The system is square-cut and flat: ruled capability rows, contained original pro
 
 ### Optional dark theme
 
-The navigation includes a square 44px moon/sun toggle beside the language selector, with localized accessible naming and a pressed state. First visits follow the system color preference; explicit choices persist under `portfolio.theme.v1` and apply before content paints, including when switching languages. System changes apply until a preference is saved; other tabs synchronize saved changes. Storage failures do not disable the toggle.
+The navigation includes a square 44px theme toggle beside the language selector. Each activation cycles Light → Dark → System → Light, without a menu. A sun, moon or monitor identifies the selected mode; localized accessible naming and the title describe both the current mode and the next action. First visits default to System; all choices persist under `portfolio.theme.v1` and apply before content paints, including when switching languages. System mode follows device color changes even after being explicitly saved; other tabs synchronize saved changes. Storage failures do not disable the toggle.
 
 Dark mode preserves the folio layout and restrained blue accents: paper `#171b1e`, ink `#e7ebed`, quiet `#adb8bf`, line `#3a454d`, accent/focus `#8bbcf0`, soft accent `#233344`, surface `#20262b`. Selection, scrollbars, native color scheme and compatibility tokens follow the theme. The original light palette remains unchanged.
 
