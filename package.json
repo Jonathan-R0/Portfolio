@@ -14,7 +14,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.13.5",
     "lucide-react": "^0.468.0",
-    "next": ">=16.1.17",
+    "next": "^16.4.3",
     "portfolio": "file:",
     "react": "^18",
     "react-dom": "^18",
@@ -23,7 +23,8 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "overrides": {
-    "postcss": "^8.5.10"
+    "postcss": "^8.5.10",
+    "postcss-selector-parser": "^7.1.7"
   },
   "devDependencies": {
     "@types/node": "^20",
