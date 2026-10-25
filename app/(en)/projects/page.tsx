@@ -1,1 +1,5 @@
-export { default } from "@/components/pages/ProjectsPage";
+import ProjectsPage from "@/components/pages/ProjectsPage";
+
+export default function Page() {
+  return <ProjectsPage locale="en" />;
+}

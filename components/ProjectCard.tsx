@@ -41,10 +41,7 @@ export default function ProjectCard({
             </span>
           ))}
         </div>
-        <Link
-          href={`/projects/${slug}`}
-          className="accent-link font-medium"
-        >
+        <Link href={`/projects/${slug}`} className="accent-link font-medium">
           View Project Details 👀
         </Link>
       </div>

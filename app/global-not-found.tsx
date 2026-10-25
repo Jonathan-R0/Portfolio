@@ -7,5 +7,9 @@ export const metadata = {
 };
 
 export default function GlobalNotFound() {
-  return <SiteDocument locale="en"><NotFound /></SiteDocument>;
+  return (
+    <SiteDocument locale="en">
+      <NotFound />
+    </SiteDocument>
+  );
 }

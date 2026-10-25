@@ -1,8 +1,12 @@
-"use client";
+import { getMessages, type LocalizedProps } from "@/lib/messages";
 
-import { useI18n } from "@/lib/i18n";
-
-export default function SubjectsLeft() {
-  const { messages: { common, about } } = useI18n();
-  return <section className="education" aria-labelledby="education-title"><h3 id="education-title">{common.education}</h3><p>{common.faculty}</p><p className="education-completed">{about.completed}</p></section>;
+export default function SubjectsLeft({ locale }: LocalizedProps) {
+  const { common, about } = getMessages(locale);
+  return (
+    <section className="education" aria-labelledby="education-title">
+      <h3 id="education-title">{common.education}</h3>
+      <p>{common.faculty}</p>
+      <p className="education-completed">{about.completed}</p>
+    </section>
+  );
 }

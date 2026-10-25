@@ -4,7 +4,12 @@
 // https://ui.aceternity.com/components/card-hover-effect
 // Keeps the shared-layout highlight; adds keyboard focus and reduced-motion support.
 import Link from "next/link";
-import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
+import {
+  AnimatePresence,
+  LayoutGroup,
+  motion,
+  useReducedMotion,
+} from "framer-motion";
 import { useId, useState, type ReactNode } from "react";
 
 interface HoverItem {
@@ -14,7 +19,9 @@ interface HoverItem {
 }
 
 export function HoverEffect({ items }: { items: HoverItem[] }) {
-  const [active, setActive] = useState<number | null>(null);
+  const [hovered, setHovered] = useState<number | null>(null);
+  const [focused, setFocused] = useState<number | null>(null);
+  const active = focused ?? hovered;
   const reducedMotion = useReducedMotion();
   const groupId = useId();
 
@@ -27,12 +34,16 @@ export function HoverEffect({ items }: { items: HoverItem[] }) {
             key={item.title}
             href={item.link}
             target={item.link.startsWith("https://") ? "_blank" : undefined}
-            rel={item.link.startsWith("https://") ? "noopener noreferrer" : undefined}
+            rel={
+              item.link.startsWith("https://")
+                ? "noopener noreferrer"
+                : undefined
+            }
             className="skill-hover-item"
-            onMouseEnter={() => setActive(index)}
-            onMouseLeave={() => setActive(null)}
-            onFocus={() => setActive(index)}
-            onBlur={() => setActive(null)}
+            onMouseEnter={() => setHovered(index)}
+            onMouseLeave={() => setHovered(null)}
+            onFocus={() => setFocused(index)}
+            onBlur={() => setFocused(null)}
           >
             <AnimatePresence initial={false}>
               {active === index ? (

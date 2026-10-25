@@ -1,1 +1,5 @@
-export { default } from "@/components/pages/AboutMe";
+import AboutMe from "@/components/pages/AboutMe";
+
+export default function Page() {
+  return <AboutMe locale="en" />;
+}

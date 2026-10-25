@@ -12,12 +12,12 @@ Project IDs, technologies and destinations are maintained in `public/projects.js
 - The URL determines the language, regardless of browser language or stored preferences. The **ES / EN** selector navigates to the equivalent page, preserving other query parameters and anchors. It restores scroll position when sessionStorage is available; storage is not required to switch languages.
 - Old `?lang=es` / `?lang=en` links are still supported: after hydration they are replaced with the equivalent language route, preserving other parameters and anchors. Unsupported language queries are ignored.
 - Internal page links stay in the current language. Browser back/forward restores language changes. Switching languages loads a new document because the two languages have separate HTML root layouts.
-- `lib/i18n.tsx` provides typed dictionaries through `useI18n()`. `lib/routing.ts` centralizes localized URLs and legacy-link compatibility. Metadata is generated at build time, not rewritten in the browser. There is no additional dependency or server requirement.
+- `lib/messages.ts` selects typed dictionaries for Server Components. `lib/i18n.tsx` provides only the active dictionary to interactive components through `useI18n()`. `lib/routing.ts` centralizes localized URLs and legacy-link compatibility. Metadata is generated at build time, not rewritten in the browser. There is no runtime server requirement.
 - Edit both JSON files together, preserving matching keys and array order. Project translation entries follow the order of `public/projects.json`; logo entries follow `components/LogoCarousel.tsx`. Proper names and technology brands are intentionally unchanged.
 - Shared page components live in `components/pages/`. English routes use `app/(en)/`; Spanish routes use `app/es/`. `components/SiteDocument.tsx` shares the shell and fonts. `globalNotFound` is enabled for the shared 404 because there are multiple root layouts.
 - `trailingSlash: true` exports each page as a directory with `index.html`, so `/es/` and nested pages work on GitHub Pages without server rewrites.
 - Internal links disable speculative prefetch: this Next.js version requests segment-prefetch filenames that do not match the Windows static export. On-demand client navigation still works through the exported page payloads.
-- Run `npm run lint`, `npm run build`, then `node --test tests/*.test.mjs` to validate translations, language routing and exported SEO.
+- Run `npm run check`, `npm run build`, then `npm run test:export` to validate source quality, translations, language routing, themes and exported SEO.
 
 The [current teaching/Aceternity review](.impeccable/review/teaching-aceternity-review.md) includes desktop/mobile screenshots and browser checks. [Source attribution and profile verification](.impeccable/review/aceternity-sources.md) document the Card Hover Effect and Timeline adaptations. Run `npm run build` for the static export in `out/`, and `npm run lint` to check the source.
 
@@ -47,7 +47,18 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the home page by modifying `components/pages/Home.tsx`. Both language versions auto-update as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to self-host Manrope headings and the local Geist body and code fonts.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to self-host Barlow Condensed headings and the local Geist body and code fonts.
+
+## Frontend maintenance
+
+- Page content renders as Server Components; browser-only behavior stays in small client components and hooks under `lib/hooks/`.
+- Keep theme parsing, system resolution and cycling in `lib/theme.ts`. The pre-paint script and interactive toggle share these rules; `useTheme` manages browser subscriptions and persistence.
+- Keep providers focused on sharing data. Locale navigation is a separate client boundary; its browser operations live in `lib/locale-navigation.ts`, not inside context memoization callbacks.
+- Store only state that affects React output. Native `details` owns disclosure state, CSS owns its fade, and carousel autoplay visibility updates the CSS animation directly. Drag coordinates stay in refs; only pause/drag UI flags trigger React renders. Share the scroll-marker observer between the compact header and back-to-top control.
+- `lib/profile.ts` centralizes GitHub, LinkedIn and resume URLs. Keep the email in `lib/contact.ts`.
+- Use `npm run format` for consistent source formatting. `npm run check` runs ESLint, TypeScript, formatting checks and unit tests. Unit tests run independently of the export; `npm run test:export` must follow a production build.
+- The Pages workflow runs these quality and export checks before uploading the deployment artifact.
+- Preserve static-export compatibility and validate both languages after changing shared page components. Do not widen client boundaries just to access translated text.
 
 ## Learn More
 

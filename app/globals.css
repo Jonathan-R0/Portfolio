@@ -124,6 +124,8 @@ pre { overflow-x: auto; padding: 24px; background: var(--surface); }
 .project-details summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
 .project-details[open] summary svg { transform: rotate(180deg); }
 .project-details-body { padding-block: 8px 16px; font-size: 0.88rem; color: var(--quiet); }
+.project-details[open] .project-details-body { animation: project-notes-open 180ms ease-out; }
+@keyframes project-notes-open { from { opacity: 0; } to { opacity: 1; } }
 .project-details-body h3 { color: var(--ink); font-size: 1.5rem; margin-bottom: 12px; }
 .project-details-body p + p { margin-top: 12px; }
 

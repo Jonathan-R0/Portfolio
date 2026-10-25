@@ -1,11 +1,20 @@
-"use client";
-
 import Project from "./Project";
-import { useI18n } from "@/lib/i18n";
+import { getMessages, type LocalizedProps } from "@/lib/messages";
 import projects from "@/public/projects.json";
-import { LayoutGroup } from "framer-motion";
+import { ProjectCollection } from "@/components/ui/project-collection";
 
-export default function Projects() {
-  const { messages } = useI18n();
-  return <LayoutGroup id="project-collection"><div className="project-grid">{projects.map((project, index) => <Project key={project.id} {...project} {...messages.projects.entries[index]} />)}</div></LayoutGroup>;
+export default function Projects({ locale }: LocalizedProps) {
+  const messages = getMessages(locale);
+  return (
+    <ProjectCollection>
+      {projects.map((project, index) => (
+        <Project
+          key={project.id}
+          {...project}
+          {...messages.projects.entries[index]}
+          locale={locale}
+        />
+      ))}
+    </ProjectCollection>
+  );
 }

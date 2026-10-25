@@ -1,24 +1,41 @@
 import type { Metadata } from "next";
-import en from "./locales/en.json";
-import es from "./locales/es.json";
-import { locales, localizedPath, pagePaths, stripLocale, type Locale, type PagePath } from "./routing";
+import { getMessages, type Messages } from "./messages";
+import {
+  locales,
+  localizedPath,
+  pagePaths,
+  stripLocale,
+  type Locale,
+  type PagePath,
+} from "./routing";
 
 export const siteUrl = "https://niyo.com.ar";
-export const indexablePaths = locales.flatMap((locale) => pagePaths.map((path) => localizedPath(path, locale)));
+export const indexablePaths = locales.flatMap((locale) =>
+  pagePaths.map((path) => localizedPath(path, locale)),
+);
 
-export function getPageSeo(messages: typeof en, pathname: string) {
+export function getPageSeo(messages: Messages, pathname: string) {
   const path = stripLocale(pathname);
   if (path === "/projects") {
-    return { title: messages.meta.projectsTitle, description: messages.meta.projectsDescription };
+    return {
+      title: messages.meta.projectsTitle,
+      description: messages.meta.projectsDescription,
+    };
   }
   if (path === "/aboutme") {
-    return { title: messages.meta.aboutTitle, description: messages.meta.aboutDescription };
+    return {
+      title: messages.meta.aboutTitle,
+      description: messages.meta.aboutDescription,
+    };
   }
   return { title: messages.meta.title, description: messages.meta.description };
 }
 
-export function createPageMetadata(pathname: PagePath, locale: Locale = "en"): Metadata {
-  const messages = locale === "es" ? es : en;
+export function createPageMetadata(
+  pathname: PagePath,
+  locale: Locale = "en",
+): Metadata {
+  const messages = getMessages(locale);
   const { title, description } = getPageSeo(messages, pathname);
   const url = new URL(localizedPath(pathname, locale), siteUrl).href;
   return {

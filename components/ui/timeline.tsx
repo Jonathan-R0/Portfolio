@@ -27,15 +27,17 @@ export function Timeline({ data }: { data: TimelineEntry[] }) {
           style={{ scaleY: reducedMotion ? 1 : scrollYProgress }}
         />
       </div>
-      <ol>{data.map((entry) => (
-        <li className="timeline-entry" key={entry.title}>
-          <div className="timeline-date">
-            <span className="timeline-node" aria-hidden="true" />
-            <p>{entry.title}</p>
-          </div>
-          <div className="timeline-content">{entry.content}</div>
-        </li>
-      ))}</ol>
+      <ol>
+        {data.map((entry) => (
+          <li className="timeline-entry" key={entry.title}>
+            <div className="timeline-date">
+              <span className="timeline-node" aria-hidden="true" />
+              <p>{entry.title}</p>
+            </div>
+            <div className="timeline-content">{entry.content}</div>
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }

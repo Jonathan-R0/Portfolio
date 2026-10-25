@@ -1,25 +1,35 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import test from "node:test";
-import ts from "typescript";
+import { loadTypeScript } from "./helpers/load-typescript.mjs";
 
-// Compile this dependency-free helper in memory, including on Node 20 in CI.
-const source = readFileSync(new URL("../lib/routing.ts", import.meta.url), "utf8");
-const { outputText } = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2020 } });
-const { localizeHref, legacyLocaleHref, stripLocale } = await import(`data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`);
+const { localizeHref, legacyLocaleHref, stripLocale } = await loadTypeScript(
+  new URL("../lib/routing.ts", import.meta.url),
+);
 
 test("Language links use static routes and preserve query parameters and anchors", () => {
   assert.equal(localizeHref("/", "es"), "/es/");
   assert.equal(localizeHref("/es/", "en"), "/");
-  assert.equal(localizeHref("/projects?ref=folio#numi", "es"), "/es/projects/?ref=folio#numi");
-  assert.equal(localizeHref("/es/projects/?ref=folio#numi", "en"), "/projects/?ref=folio#numi");
+  assert.equal(
+    localizeHref("/projects?ref=folio#numi", "es"),
+    "/es/projects/?ref=folio#numi",
+  );
+  assert.equal(
+    localizeHref("/es/projects/?ref=folio#numi", "en"),
+    "/projects/?ref=folio#numi",
+  );
   assert.equal(localizeHref("/es/aboutme/", "es"), "/es/aboutme/");
   assert.equal(localizeHref("/#skills", "es"), "/es/#skills");
 });
 
 test("Legacy language queries resolve to matching routes without redirect loops", () => {
-  assert.equal(legacyLocaleHref("/projects?lang=es&ref=old#numi"), "/es/projects/?ref=old#numi");
-  assert.equal(legacyLocaleHref("/es/aboutme/?lang=en#teaching"), "/aboutme/#teaching");
+  assert.equal(
+    legacyLocaleHref("/projects?lang=es&ref=old#numi"),
+    "/es/projects/?ref=old#numi",
+  );
+  assert.equal(
+    legacyLocaleHref("/es/aboutme/?lang=en#teaching"),
+    "/aboutme/#teaching",
+  );
   assert.equal(legacyLocaleHref("/?lang=es"), "/es/");
   assert.equal(legacyLocaleHref("/es/?lang=es"), "/es/");
   assert.equal(legacyLocaleHref("/es/projects/"), null);
@@ -27,7 +37,15 @@ test("Legacy language queries resolve to matching routes without redirect loops"
 });
 
 test("Localization leaves external URLs, assets and unknown pages untouched", () => {
-  for (const href of ["https://example.com/projects", "//example.com/", "mailto:a@example.com", "#skills", "/profileimage.jpg", "/logos/test.svg", "/missing"]) {
+  for (const href of [
+    "https://example.com/projects",
+    "//example.com/",
+    "mailto:a@example.com",
+    "#skills",
+    "/profileimage.jpg",
+    "/logos/test.svg",
+    "/missing",
+  ]) {
     assert.equal(localizeHref(href, "es"), href);
   }
   assert.equal(stripLocale("/es/"), "/");
